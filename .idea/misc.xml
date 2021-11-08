@@ -3,6 +3,16 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/checkbox_15px.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/checkbox_red.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/ic_baseline_home_red.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/ic_baseline_search_gray.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/ic_launcher_background.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/ic_launcher_foreground.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/ic_outline_account_box_24.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/ic_outline_account_box_red.xml" value="0.26614583333333336" />
+        <entry key="..\:/IT/AndroidStudio/CookingGithub/android/app/src/main/res/drawable/icon_launcher_background.xml" value="0.26614583333333336" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/bottom/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.2703125" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/bottom/app/src/main/res/drawable/bg_gradient.xml" value="0.2703125" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/bottom/app/src/main/res/drawable/bg_radius_black.xml" value="0.2703125" />
