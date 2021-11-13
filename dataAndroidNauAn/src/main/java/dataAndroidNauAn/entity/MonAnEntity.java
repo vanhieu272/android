@@ -47,7 +47,7 @@ public class MonAnEntity {
 	private List<NguyenLieuEntity> listNguyenLieu = new ArrayList<>();
 	
 	@OneToMany(mappedBy = "monCT")
-	private List<CongThuctEntity> listCongThuc = new ArrayList<>();
+	private List<CongThucEntity> listCongThuc = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -97,11 +97,11 @@ public class MonAnEntity {
 		this.maMon = maMon;
 	}
 
-	public List<CongThuctEntity> getListCongThuc() {
+	public List<CongThucEntity> getListCongThuc() {
 		return listCongThuc;
 	}
 
-	public void setListCongThuc(List<CongThuctEntity> listCongThuc) {
+	public void setListCongThuc(List<CongThucEntity> listCongThuc) {
 		this.listCongThuc = listCongThuc;
 	}
 

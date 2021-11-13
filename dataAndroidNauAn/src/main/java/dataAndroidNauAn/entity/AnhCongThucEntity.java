@@ -22,7 +22,7 @@ public class AnhCongThucEntity {
 	
 	@ManyToOne
 	@JoinColumn(name = "congThuc")
-	private CongThuctEntity cThuc;
+	private CongThucEntity cThuc;
 
 	public Long getId() {
 		return id;
@@ -40,11 +40,11 @@ public class AnhCongThucEntity {
 		this.anh = anh;
 	}
 
-	public CongThuctEntity getcThuc() {
+	public CongThucEntity getcThuc() {
 		return cThuc;
 	}
 
-	public void setcThuc(CongThuctEntity cThuc) {
+	public void setcThuc(CongThucEntity cThuc) {
 		this.cThuc = cThuc;
 	}
 	
