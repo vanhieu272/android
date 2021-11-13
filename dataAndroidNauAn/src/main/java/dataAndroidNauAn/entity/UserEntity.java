@@ -1,6 +1,7 @@
 package dataAndroidNauAn.entity;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -25,6 +26,24 @@ public class UserEntity {
 	
 	@Column(name = "passWord")
 	private String passWord;
+	
+	@Column(name = "anh")
+	private String anh;
+	
+	@Column(name = "hoTen")
+	private String hoTen;
+	
+	@Column(name = "ngaySinh")
+	private Date ngaySinh;
+	
+	@Column(name = "email")
+	private String email;
+	
+	@Column(name = "gioiTinh")
+	private String gioiTinh;
+	
+	@Column(name = "sdt")
+	private String sdt;
 	
 	@Column
 	private int status;
@@ -57,6 +76,56 @@ public class UserEntity {
 
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
+	}
+	
+	
+
+	public String getAnh() {
+		return anh;
+	}
+
+	public void setAnh(String anh) {
+		this.anh = anh;
+	}
+
+	public String getHoTen() {
+		return hoTen;
+	}
+
+	public void setHoTen(String hoTen) {
+		this.hoTen = hoTen;
+	}
+
+	public Date getNgaySinh() {
+		return ngaySinh;
+	}
+
+	public void setNgaySinh(Date ngaySinh) {
+		this.ngaySinh = ngaySinh;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getGioiTinh() {
+		return gioiTinh;
+	}
+
+	public void setGioiTinh(String gioiTinh) {
+		this.gioiTinh = gioiTinh;
+	}
+
+	public String getSdt() {
+		return sdt;
+	}
+
+	public void setSdt(String sdt) {
+		this.sdt = sdt;
 	}
 
 	public int getStatus() {

@@ -13,6 +13,9 @@ public class MonAnConverter {
 		entity.setTenMon(dto.getTenMon());
 		entity.setAnh(dto.getAnh());
 		entity.setMaMon(dto.getMaMon());
+		entity.setNguoiDang(dto.getNguoiDang());
+		entity.setLuotXem(dto.getLuotXem());
+		entity.setLuotThich(dto.getLuotThich());
 		return entity;
 	}
 	
@@ -24,6 +27,9 @@ public class MonAnConverter {
 		dto.setTenMon(entity.getTenMon());
 		dto.setAnh(entity.getAnh());
 		dto.setMaMon(entity.getMaMon());
+		dto.setNguoiDang(entity.getNguoiDang());
+		dto.setLuotXem(entity.getLuotXem());
+		dto.setLuotThich(entity.getLuotThich());
 		dto.setMaDM(entity.getdMuc().getMaDM());
 		return dto;
 		

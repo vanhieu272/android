@@ -30,6 +30,15 @@ public class MonAnEntity {
 	@Column(name = "maMon")
 	private String maMon;
 	
+	@Column(name = "nguoiDang")
+	private String nguoiDang;
+	
+	@Column(name = "luotXem")
+	private int luotXem;
+	
+	@Column(name = "luotThich")
+	private int luotThich;
+	
 	@ManyToOne
 	@JoinColumn(name = "maDM")
 	private DanhMucEntity dMuc;
@@ -94,6 +103,30 @@ public class MonAnEntity {
 
 	public void setListCongThuc(List<CongThuctEntity> listCongThuc) {
 		this.listCongThuc = listCongThuc;
+	}
+
+	public String getNguoiDang() {
+		return nguoiDang;
+	}
+
+	public void setNguoiDang(String nguoiDang) {
+		this.nguoiDang = nguoiDang;
+	}
+
+	public int getLuotXem() {
+		return luotXem;
+	}
+
+	public void setLuotXem(int luotXem) {
+		this.luotXem = luotXem;
+	}
+
+	public int getLuotThich() {
+		return luotThich;
+	}
+
+	public void setLuotThich(int luotThich) {
+		this.luotThich = luotThich;
 	}
 
 	

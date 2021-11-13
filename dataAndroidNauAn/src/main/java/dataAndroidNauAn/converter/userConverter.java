@@ -12,6 +12,12 @@ public class UserConverter {
 		UserEntity entity = new UserEntity();
 		entity.setUserName(dto.getUserName());
 		entity.setPassWord(dto.getPassWord());
+		entity.setAnh(dto.getAnh());
+		entity.setHoTen(dto.getHoTen());
+		entity.setNgaySinh(dto.getNgaySinh());
+		entity.setEmail(dto.getEmail());
+		entity.setGioiTinh(dto.getGioiTinh());
+		entity.setSdt(dto.getSdt());
 		entity.setStatus(dto.getStatus());
 		return entity;
 	}
@@ -23,6 +29,12 @@ public class UserConverter {
 		}
 		dto.setUserName(entity.getUserName());
 		dto.setPassWord(entity.getPassWord());
+		dto.setAnh(entity.getAnh());
+		dto.setHoTen(entity.getHoTen());
+		dto.setNgaySinh(entity.getNgaySinh());
+		dto.setEmail(entity.getEmail());
+		dto.setGioiTinh(entity.getGioiTinh());
+		dto.setSdt(entity.getSdt());
 		dto.setStatus(entity.getStatus());
 		return dto;
 	}
@@ -30,6 +42,12 @@ public class UserConverter {
 	public UserEntity toEntity(UserDTO dto, UserEntity entity) {
 		entity.setUserName(dto.getUserName());
 		entity.setPassWord(dto.getPassWord());
+		entity.setAnh(dto.getAnh());
+		entity.setHoTen(dto.getHoTen());
+		entity.setNgaySinh(dto.getNgaySinh());
+		entity.setEmail(dto.getEmail());
+		entity.setGioiTinh(dto.getGioiTinh());
+		entity.setSdt(dto.getSdt());
 		entity.setStatus(dto.getStatus());
 		return entity;
 	}

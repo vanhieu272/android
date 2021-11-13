@@ -20,8 +20,15 @@ public class UserService implements IUserService {
 	
 	@Override
 	public UserDTO save(UserDTO model) {
-		UserEntity entity = new UserEntity();
-		entity = converter.toEntity(model);
+		UserEntity entity;
+		if(model.getId() == null) {
+			entity = new UserEntity();
+			entity = converter.toEntity(model);
+		}
+		else {
+			UserEntity oldEntity = repository.findOne(model.getId()); //lấy entity cũ
+			entity = converter.toEntity(model, oldEntity); //cập nhật entity
+		}
 		repository.save(entity);
 		return converter.toDTO(entity);
 	}
