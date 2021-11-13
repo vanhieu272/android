@@ -6,35 +6,50 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dataAndroidNauAn.converter.DanhMucConConverter;
-import dataAndroidNauAn.dto.DanhMucConDTO;
-import dataAndroidNauAn.entity.DanhMucConEntity;
+import dataAndroidNauAn.converter.MonAnConverter;
+import dataAndroidNauAn.dto.MonAnDTO;
 import dataAndroidNauAn.entity.DanhMucEntity;
-import dataAndroidNauAn.repository.DanhMucConRepository;
+import dataAndroidNauAn.entity.MonAnEntity;
 import dataAndroidNauAn.repository.DanhMucRepository;
-import dataAndroidNauAn.service.IDanhMucConService;
+import dataAndroidNauAn.repository.MonAnRepository;
+import dataAndroidNauAn.service.IMonAnService;
 
 @Service
-public class DanhMucConService implements IDanhMucConService{
+public class MonAnService implements IMonAnService{
 
 	@Autowired
-	DanhMucConConverter converter;
+	MonAnConverter converter;
 	
 	@Autowired
-	DanhMucConRepository repository;
+	MonAnRepository repository;
 	
 	@Autowired
 	DanhMucRepository dmRepository;
 	
 	@Override
-	public DanhMucConDTO save(DanhMucConDTO dto) {
-		DanhMucConEntity entity = new DanhMucConEntity();
+	public MonAnDTO save(MonAnDTO dto) {
+		MonAnEntity entity = new MonAnEntity();
 		entity = converter.toEntity(dto);
 		DanhMucEntity danhMucEntity = dmRepository.findOneByMaDM(dto.getMaDM());
-		entity.setDanhMuc(danhMucEntity);
+		entity.setdMuc(danhMucEntity);
 		repository.save(entity);
 		return converter.toDTO(entity);
 	}
+
+	@Override
+	public List<MonAnDTO> getByMaDM(String maDM) {
+		DanhMucEntity dmEntity = dmRepository.findOneByMaDM(maDM);
+		List<MonAnEntity> listEntity = new ArrayList<>();
+		List<MonAnDTO> listDTO = new ArrayList<>();
+		listEntity = repository.findAll();
+		for (MonAnEntity entity : listEntity) {
+			if(converter.toDTO(entity).getMaDM()==dmEntity.getMaDM())
+				listDTO.add(converter.toDTO(entity));
+		}
+		return listDTO;
+	}
+
+	
 
 //	@Override
 //	public List<DanhMucConDTO> getByIdDM(Long idDM) {

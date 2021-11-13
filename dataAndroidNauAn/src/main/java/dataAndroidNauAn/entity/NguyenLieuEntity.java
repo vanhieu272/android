@@ -10,22 +10,21 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "danhMucCon")
-public class DanhMucConEntity {
-	
+@Table(name = "nguyenLieu")
+public class NguyenLieuEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "tenDMC")
-	private String tenDMC;
+	@Column
+	private String ten;
 	
-	@Column(name = "anh")
-	private String anh;
+	@Column(name = "dinhLuong")
+	private String dinhLuong;
 	
 	@ManyToOne
-	@JoinColumn(name = "maDM")
-	private DanhMucEntity dMuc;
+	@JoinColumn(name = "mon")
+	private MonAnEntity monNL;
 
 	public Long getId() {
 		return id;
@@ -35,28 +34,28 @@ public class DanhMucConEntity {
 		this.id = id;
 	}
 
-	public String getTenDMC() {
-		return tenDMC;
+	public String getTen() {
+		return ten;
 	}
 
-	public void setTenDMC(String tenDMC) {
-		this.tenDMC = tenDMC;
+	public void setTen(String ten) {
+		this.ten = ten;
 	}
 
-	public String getAnh() {
-		return anh;
+	public String getDinhLuong() {
+		return dinhLuong;
 	}
 
-	public void setAnh(String anh) {
-		this.anh = anh;
+	public void setDinhLuong(String dinhLuong) {
+		this.dinhLuong = dinhLuong;
 	}
 
-	public DanhMucEntity getDanhMuc() {
-		return dMuc;
+	public MonAnEntity getMon() {
+		return monNL;
 	}
 
-	public void setDanhMuc(DanhMucEntity danhMuc) {
-		this.dMuc = danhMuc;
+	public void setMon(MonAnEntity mon) {
+		this.monNL = mon;
 	}
 	
 	

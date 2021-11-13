@@ -1,8 +1,9 @@
 package dataAndroidNauAn.service;
 
-import dataAndroidNauAn.dto.userDTO;
+import dataAndroidNauAn.dto.UserDTO;
 
 public interface IUserService {
-	userDTO save(userDTO model);
-	userDTO getUser(String userName);
+	UserDTO save(UserDTO model);
+	UserDTO getUser(String userName);
+	
 }

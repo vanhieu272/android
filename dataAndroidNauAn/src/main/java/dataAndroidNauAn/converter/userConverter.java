@@ -2,13 +2,13 @@ package dataAndroidNauAn.converter;
 
 import org.springframework.stereotype.Component;
 
-import dataAndroidNauAn.dto.userDTO;
+import dataAndroidNauAn.dto.UserDTO;
 import dataAndroidNauAn.entity.UserEntity;
 
 @Component
-public class userConverter {
+public class UserConverter {
 
-	public UserEntity toEntity(userDTO dto) {
+	public UserEntity toEntity(UserDTO dto) {
 		UserEntity entity = new UserEntity();
 		entity.setUserName(dto.getUserName());
 		entity.setPassWord(dto.getPassWord());
@@ -16,8 +16,8 @@ public class userConverter {
 		return entity;
 	}
 	
-	public userDTO toDTO(UserEntity entity) {
-		userDTO dto = new userDTO();
+	public UserDTO toDTO(UserEntity entity) {
+		UserDTO dto = new UserDTO();
 		if(entity.getId() != null) {
 			dto.setId(entity.getId());
 		}
@@ -27,7 +27,7 @@ public class userConverter {
 		return dto;
 	}
 	
-	public UserEntity toEntity(userDTO dto, UserEntity entity) {
+	public UserEntity toEntity(UserDTO dto, UserEntity entity) {
 		entity.setUserName(dto.getUserName());
 		entity.setPassWord(dto.getPassWord());
 		entity.setStatus(dto.getStatus());

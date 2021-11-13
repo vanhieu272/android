@@ -3,8 +3,8 @@ package dataAndroidNauAn.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import dataAndroidNauAn.converter.userConverter;
-import dataAndroidNauAn.dto.userDTO;
+import dataAndroidNauAn.converter.UserConverter;
+import dataAndroidNauAn.dto.UserDTO;
 import dataAndroidNauAn.entity.UserEntity;
 import dataAndroidNauAn.repository.userRepository;
 import dataAndroidNauAn.service.IUserService;
@@ -16,10 +16,10 @@ public class UserService implements IUserService {
 	private userRepository repository;
 	
 	@Autowired
-	private userConverter converter;
+	private UserConverter converter;
 	
 	@Override
-	public userDTO save(userDTO model) {
+	public UserDTO save(UserDTO model) {
 		UserEntity entity = new UserEntity();
 		entity = converter.toEntity(model);
 		repository.save(entity);
@@ -27,7 +27,7 @@ public class UserService implements IUserService {
 	}
 
 	@Override
-	public userDTO getUser(String userName) {
+	public UserDTO getUser(String userName) {
 		UserEntity entity;
 		entity = repository.findOneByUserName(userName);
 		return converter.toDTO(entity);

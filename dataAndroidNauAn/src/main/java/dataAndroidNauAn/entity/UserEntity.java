@@ -1,10 +1,14 @@
 package dataAndroidNauAn.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 //@EntityListeners(AuditingEntityListener.class)
@@ -24,6 +28,12 @@ public class UserEntity {
 	
 	@Column
 	private int status;
+	
+	@OneToMany(mappedBy = "userYT")
+	private List<YeuThichEntity> listYeuThich = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "userTB")
+	private List<ThongBaoEntity> listThongBao = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -56,6 +66,24 @@ public class UserEntity {
 	public void setStatus(int status) {
 		this.status = status;
 	}
+
+	public List<YeuThichEntity> getListYeuThich() {
+		return listYeuThich;
+	}
+
+	public void setListYeuThich(List<YeuThichEntity> listYeuThich) {
+		this.listYeuThich = listYeuThich;
+	}
+
+	public List<ThongBaoEntity> getListThongBao() {
+		return listThongBao;
+	}
+
+	public void setListThongBao(List<ThongBaoEntity> listThongBao) {
+		this.listThongBao = listThongBao;
+	}
+	
+	
 	
 	
 }

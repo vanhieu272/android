@@ -7,22 +7,22 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import dataAndroidNauAn.dto.userDTO;
+import dataAndroidNauAn.dto.UserDTO;
 import dataAndroidNauAn.service.impl.UserService;
 
 @RestController
-public class userAPI {
+public class UserAPI {
 
 	@Autowired
 	private UserService service;
 	
 	@PostMapping(value = "/user")
-	public userDTO createUser(@RequestBody userDTO model) {
+	public UserDTO createUser(@RequestBody UserDTO model) {
 		return service.save(model);
 	}
 	
 	@GetMapping(value = "/user")
-	public userDTO getUser(@RequestParam("userName") String userName) {
+	public UserDTO getUser(@RequestParam("userName") String userName) {
 		return service.getUser(userName);
 	}
 	

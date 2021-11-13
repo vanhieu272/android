@@ -29,7 +29,7 @@ public class DanhMucEntity {
 	private String maDM;
 	
 	@OneToMany(mappedBy = "dMuc")
-	private List<DanhMucConEntity> listDMC = new ArrayList<>();
+	private List<MonAnEntity> listDMC = new ArrayList<>();
 
 	public Long getId() {
 		return id;
@@ -64,11 +64,11 @@ public class DanhMucEntity {
 		this.maDM = maDM;
 	}
 
-	public List<DanhMucConEntity> getListDMC() {
+	public List<MonAnEntity> getListDMC() {
 		return listDMC;
 	}
 
-	public void setListDMC(List<DanhMucConEntity> listDMC) {
+	public void setListDMC(List<MonAnEntity> listDMC) {
 		this.listDMC = listDMC;
 	}
 	

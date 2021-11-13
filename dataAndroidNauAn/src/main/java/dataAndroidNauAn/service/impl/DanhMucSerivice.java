@@ -1,5 +1,8 @@
 package dataAndroidNauAn.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +27,17 @@ public class DanhMucSerivice implements IDanhMucService{
 		entity = converter.toEntity(model);
 		repository.save(entity);
 		return converter.toDTO(entity);
+	}
+
+	@Override
+	public List<DanhMucDTO> getAll() {
+		List<DanhMucDTO> listDTO = new ArrayList<>();
+		List<DanhMucEntity> listEnity = new ArrayList<>();
+		listEnity = repository.findAll();
+		for (DanhMucEntity entity : listEnity) {
+			listDTO.add(converter.toDTO(entity));
+		}
+		return listDTO;
 	}
 
 }
