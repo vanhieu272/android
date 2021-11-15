@@ -6,14 +6,14 @@ import org.springframework.stereotype.Service;
 import dataAndroidNauAn.converter.UserConverter;
 import dataAndroidNauAn.dto.UserDTO;
 import dataAndroidNauAn.entity.UserEntity;
-import dataAndroidNauAn.repository.userRepository;
+import dataAndroidNauAn.repository.UserRepository;
 import dataAndroidNauAn.service.IUserService;
 
 @Service
 public class UserService implements IUserService {
 
 	@Autowired
-	private userRepository repository;
+	private UserRepository repository;
 	
 	@Autowired
 	private UserConverter converter;
