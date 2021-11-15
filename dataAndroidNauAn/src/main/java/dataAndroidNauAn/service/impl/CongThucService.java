@@ -1,5 +1,8 @@
 package dataAndroidNauAn.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -31,6 +34,16 @@ public class CongThucService implements ICongThucService{
 		entity.setMon(monAnEntity);
 		repository.save(entity);
 		return converter.toDTO(entity);
+	}
+	@Override
+	public List<CongThucDTO> getByMaMon(String maMon) {
+		MonAnEntity monAnEntity = monAnRepository.findOneByMaMon(maMon);
+		List<CongThucEntity> listEntities = repository.findByMonCT(monAnEntity);
+		List<CongThucDTO> listDTO = new ArrayList<>();
+		for (CongThucEntity entity : listEntities) {
+			listDTO.add(converter.toDTO(entity));
+		}
+		return listDTO;
 	}
 
 }
