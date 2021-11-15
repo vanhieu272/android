@@ -9,4 +9,5 @@ import dataAndroidNauAn.entity.MonAnEntity;
 
 public interface CongThucRepository extends JpaRepository<CongThucEntity, Long>{
 	List<CongThucEntity> findByMonCT(MonAnEntity monCT);
+	public CongThucEntity findOneByMaCT(String maCT);
 }

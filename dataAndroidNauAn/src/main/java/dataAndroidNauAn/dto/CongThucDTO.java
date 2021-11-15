@@ -4,6 +4,7 @@ public class CongThucDTO {
 
 	private Long id;
 	private String congThuc;
+	private String maCT;
 	private String monCT;
 	public Long getId() {
 		return id;
@@ -22,6 +23,12 @@ public class CongThucDTO {
 	}
 	public void setMonCT(String monCT) {
 		this.monCT = monCT;
+	}
+	public String getMaCT() {
+		return maCT;
+	}
+	public void setMaCT(String maCT) {
+		this.maCT = maCT;
 	}
 	
 	

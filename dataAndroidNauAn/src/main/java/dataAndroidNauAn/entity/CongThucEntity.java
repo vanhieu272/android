@@ -24,6 +24,9 @@ public class CongThucEntity {
 	@Column(name = "congThuc")
 	private String congThuc;
 	
+	@Column(name = "maCT")
+	private String maCT;
+	
 	@OneToMany(mappedBy = "cThuc")
 	private List<AnhCongThucEntity> listAnh = new ArrayList<>();
 	
@@ -62,6 +65,24 @@ public class CongThucEntity {
 	public void setMon(MonAnEntity mon) {
 		this.monCT = mon;
 	}
+
+	public String getMaCT() {
+		return maCT;
+	}
+
+	public void setMaCT(String maCT) {
+		this.maCT = maCT;
+	}
+
+	public MonAnEntity getMonCT() {
+		return monCT;
+	}
+
+	public void setMonCT(MonAnEntity monCT) {
+		this.monCT = monCT;
+	}
+	
+	
 	
 	
 }
