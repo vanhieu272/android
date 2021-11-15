@@ -49,19 +49,12 @@ public class MonAnService implements IMonAnService{
 		return listDTO;
 	}
 
+	@Override
+	public MonAnDTO getByMaMon(String maMon) {
+		MonAnEntity monAnEntity = repository.findOneByMaMon(maMon);
+		return converter.toDTO(monAnEntity);
+	}
+
 	
-
-//	@Override
-//	public List<DanhMucConDTO> getByIdDM(Long idDM) {
-//		List<DanhMucConDTO> listDTO = new ArrayList<>();
-//		List<DanhMucConEntity> listEntities = new ArrayList<>();
-//		DanhMucEntity danhMucEntity = dmRepository.findOneById(idDM);
-//		listEntities = repository.findByDanhMucEntities(danhMucEntity);
-//		for (DanhMucConEntity danhMucConEntity : listEntities) {
-//			listDTO.add(converter.toDTO(danhMucConEntity));
-//		}
-//		return listDTO;
-//	}
-
 	
 }

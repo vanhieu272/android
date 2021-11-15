@@ -22,13 +22,19 @@ public class MonAnAPI {
 	@Autowired
 	MonAnService service;
 	
-	@PostMapping(value = "/monAn")
+	@PostMapping(value = "/monAn") //thêm món
 	public MonAnDTO save(@RequestBody MonAnDTO model) {
 		return service.save(model);
 	}
-	@GetMapping(value = "/monAn")
+	
+	@GetMapping(value = "/monAn") //lấy 1 list 1 ăn theo danh mục
 	public List<MonAnDTO> getDanhMucCon(@RequestParam("maDM") String maDM){
 		return service.getByMaDM(maDM);
+	}
+	
+	@GetMapping(value = "/motMonAn") //lấy 1 món theo mã món
+	public MonAnDTO getByMaMon(@RequestParam("maMon") String maMon) {
+		return service.getByMaMon(maMon);
 	}
 	
 }
