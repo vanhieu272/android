@@ -7,9 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dataAndroidNauAn.converter.MonAnConverter;
+import dataAndroidNauAn.converter.YeuThichConverter;
 import dataAndroidNauAn.dto.MonAnDTO;
+import dataAndroidNauAn.dto.YeuThichDTO;
 import dataAndroidNauAn.entity.DanhMucEntity;
 import dataAndroidNauAn.entity.MonAnEntity;
+import dataAndroidNauAn.entity.YeuThichEntity;
 import dataAndroidNauAn.repository.DanhMucRepository;
 import dataAndroidNauAn.repository.MonAnRepository;
 import dataAndroidNauAn.service.IMonAnService;
@@ -26,6 +29,23 @@ public class MonAnService implements IMonAnService{
 	@Autowired
 	DanhMucRepository dmRepository;
 	
+	@Autowired
+	YeuThichService ytService;
+	
+	@Autowired
+	YeuThichConverter ytConverter;
+	
+	@Autowired
+	MonAnService monService;
+	
+	@Autowired 
+	ThongBaoService tbaoService;
+	
+	@Autowired
+	MonAnConverter monConverter;
+
+	
+	
 	@Override
 	public MonAnDTO save(MonAnDTO dto) {
 		MonAnEntity entity = new MonAnEntity();
@@ -33,6 +53,26 @@ public class MonAnService implements IMonAnService{
 		DanhMucEntity danhMucEntity = dmRepository.findOneByMaDM(dto.getMaDM());
 		entity.setdMuc(danhMucEntity);
 		repository.save(entity);
+		
+		//tìm xem món mới có trùng tên với mục yêu thích của user nào không?
+		
+		//tìm tất cả user trong yêu thích
+		List<String> listUser = ytService.getAllUser();
+		for (String user : listUser) {
+			List<YeuThichDTO> listYTDTO = ytService.getYeuThichByUser(user); //lấy các món yêu thích của 1 user
+			for (YeuThichDTO yeuThichDTO : listYTDTO) {
+				
+				YeuThichEntity ytEntity = ytConverter.toEntity(yeuThichDTO);
+				
+				MonAnDTO monDTO = monService.getByMaMon(ytEntity.getMaMon()); //lấy thông tin món từ mã món
+				
+				if(entity.getTenMon().equals(monDTO.getTenMon())) { //nếu món mới thêm vào trùng tên với món trong yêu thích thì thêm tbao
+					tbaoService.save(user, entity);
+				}
+			}
+			
+		}
+		
 		return converter.toDTO(entity);
 	}
 

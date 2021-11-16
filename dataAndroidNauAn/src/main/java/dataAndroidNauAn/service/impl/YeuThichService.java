@@ -46,4 +46,18 @@ public class YeuThichService implements IYeuThichService{
 		return listDTO;
 	}
 
+	@Override
+	public List<String> getAllUser() {
+		List<YeuThichEntity> listEntities = repository.findAll();
+		String tmpUser="";
+		List<String> listUser = new ArrayList<>();
+		for (YeuThichEntity entity : listEntities) {
+			if(!tmpUser.contains(entity.getUserYT().getUserName())) {
+				listUser.add(entity.getUserYT().getUserName());
+				tmpUser+=" "+entity.getUserYT().getUserName();
+			}
+		}
+		return listUser;
+	}
+
 }

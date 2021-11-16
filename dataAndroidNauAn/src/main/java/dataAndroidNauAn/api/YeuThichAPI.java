@@ -27,5 +27,10 @@ public class YeuThichAPI {
 	public List<YeuThichDTO> getYeuThichByUser(@RequestParam("userName") String userName){
 		return service.getYeuThichByUser(userName);
 	}
+	
+	@GetMapping(value = "userYeuThich")
+	public List<String> getUser(){
+		return service.getAllUser();
+	}
 
 }

@@ -19,6 +19,12 @@ public class ThongBaoEntity {
 	@Column(name = "noiDung")
 	private String noiDung;
 	
+	@Column(name = "maMon")
+	private Long maMon; 
+	
+	@Column
+	private int status;
+	
 	@ManyToOne
 	@JoinColumn(name = "user")
 	private UserEntity userTB;
@@ -46,6 +52,28 @@ public class ThongBaoEntity {
 	public void setUserTB(UserEntity userTB) {
 		this.userTB = userTB;
 	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public Long getMaMon() {
+		return maMon;
+	}
+
+	public void setMaMon(Long maMon) {
+		this.maMon = maMon;
+	}
+
+	
+
+	
+	
+	
 	
 	
 }
