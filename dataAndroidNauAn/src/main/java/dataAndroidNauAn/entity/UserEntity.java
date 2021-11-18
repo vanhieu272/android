@@ -11,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 //@EntityListeners(AuditingEntityListener.class)
 @Entity
@@ -21,7 +22,7 @@ public class UserEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(name = "userName")
+	@Column(name = "userName", nullable = false, unique = true)
 	private String userName;
 	
 	@Column(name = "passWord")
