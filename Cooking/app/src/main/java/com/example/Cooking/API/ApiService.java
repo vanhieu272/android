@@ -16,13 +16,12 @@ public interface ApiService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.7:8081/")
+            .baseUrl("http://192.168.1.8:8081/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
 
     @GET("monAn/")
     Call<List<MonAn>> getMonAnByDanhMuc(@Query("maDM") String maDM);
-
 
 }

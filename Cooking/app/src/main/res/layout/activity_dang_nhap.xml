@@ -70,31 +70,32 @@
                 android:id="@+id/txtUser"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
+                android:layout_centerHorizontal="true"
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/user"
                 android:paddingLeft="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:layout_centerHorizontal="true"/>
+                android:textColorHint="@color/grey" />
 
             <EditText
                 android:id="@+id/txtPassword"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/txtUser"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/pasword"
                 android:paddingLeft="10dp"
                 android:textColor="@color/black"
-                android:textColorHint="@color/grey"
-                android:layout_centerHorizontal="true"/>
+                android:textColorHint="@color/grey" />
 
             <Button
                 android:id="@+id/btnSignin"
                 android:layout_width="250dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/txtPassword"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="70dp"
                 android:background="@drawable/rounded_corner_20dp"
                 android:shadowColor="@color/grey"
@@ -103,8 +104,7 @@
                 android:shadowRadius="2"
                 android:text="ĐĂNG NHẬP"
                 android:textColor="@color/red"
-                android:textSize="20dp"
-                android:layout_centerHorizontal="true"/>
+                android:textSize="20dp" />
         </RelativeLayout>
 
         <LinearLayout
@@ -136,17 +136,18 @@
                 android:textColor="@color/white"
                 android:textStyle="bold"/>
         </LinearLayout>
+
         <Button
             android:id="@+id/btnVaoNgay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_below="@+id/lnDangKy"
+            android:layout_centerHorizontal="true"
             android:backgroundTint="@color/red"
             android:stateListAnimator="@null"
             android:text="Vào ngay"
             android:textAllCaps="false"
             android:textColor="@color/white"
-            android:textStyle="bold"
-            android:layout_below="@+id/lnDangKy"
-            android:layout_centerHorizontal="true"/>
+            android:textStyle="bold" />
     </RelativeLayout>
 </RelativeLayout>

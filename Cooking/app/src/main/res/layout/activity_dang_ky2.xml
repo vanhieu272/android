@@ -74,11 +74,11 @@
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/panelName"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/doB"
                 android:paddingLeft="10dp"
-                android:layout_centerHorizontal="true"
                 android:textColorHint="@color/grey" />
 
             <EditText
@@ -86,11 +86,11 @@
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/txtDoB"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/sdt"
                 android:paddingLeft="10dp"
-                android:layout_centerHorizontal="true"
                 android:textColorHint="@color/grey" />
 
             <EditText
@@ -98,10 +98,10 @@
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_below="@+id/txtSDT"
+                android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/email"
-                android:layout_centerHorizontal="true"
                 android:paddingLeft="10dp"
                 android:textColorHint="@color/grey" />
 
