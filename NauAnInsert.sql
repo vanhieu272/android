@@ -1,3 +1,4 @@
+
 /*insert table danhmuc*/
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-chinh', 'Món chính');
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-nuong', 'Món nướng');
@@ -28,24 +29,30 @@
     INSERT INTO `nauan`.`user` (`user_name`, `pass_word`, `status`) VALUES ('user2', '123456', '1');
     INSERT INTO `nauan`.`user` (`user_name`, `pass_word`, `status`) VALUES ('user3', '123456', '1');
 /*insert table yeuthich*/
-	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('vandong', 'tra-vai');
-	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('nhuy', 'tra-dao');
-	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('hha', 'tra-chanh');
-	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('chihieu', 'tra-vai');  
+	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('1', 'tra-vai');
+	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('2', 'tra-dao');
+	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('3', 'tra-chanh');
+	INSERT INTO `nauan`.`yeu_thich` (`user`, `ma_mon`) VALUES ('4', 'tra-vai');  
 /*insert table thongbao*/
-	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('vandong', 'tra-vai', 'thong bao', 1);
-	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('nhuy', 'tra-dao', 'thong bao', 1);
-	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('hha', 'tra-chanh', 'thong bao', 1);
-	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('chihieu', 'tra-vai', 'thong bao', 1);  
+	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('1', '1', 'thong bao', 1);
+	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('2', '2', 'thong bao', 1);
+	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('3', '3', 'thong bao', 1);
+	INSERT INTO `nauan`.`thong_bao` (`user`, `ma_mon`, `noi_dung`, `status`) VALUES ('4', '1', 'thong bao', 1);  
 /*insert table nguyen_lieu*/
 	INSERT INTO `nauan`.`nguyen_lieu` (`ten`, `mon`, `dinh_luong`) VALUES ('cá lóc', '5', '1 kg');
 	INSERT INTO `nauan`.`nguyen_lieu` (`ten`, `mon`, `dinh_luong`) VALUES ('hành', '5', '4 củ');
 	INSERT INTO `nauan`.`nguyen_lieu` (`ten`, `mon`, `dinh_luong`) VALUES ('hành lá', '5', '4 nhánh');
 	INSERT INTO `nauan`.`nguyen_lieu` (`ten`, `mon`, `dinh_luong`) VALUES ('ớt', '5', '2 quả');
 /*insert table cong_thuc*/
-	/*INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('vandong', '123456', '1');
-	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('nhuy', '123456', '1');
-	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('hha', '123456', '1');
-	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('chihieu', '123456', '1');*/
+	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('Sơ chế cá', '5', 'ca-loc-kho-to-b1');
+	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('Sơ chế các nguyên liệu còn lại', '5', 'ca-loc-kho-to-b2');
+	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('Ướp cá', '5', 'ca-loc-kho-to-b3');
+	INSERT INTO `nauan`.`cong_thuc` (`cong_thuc`, `mon`, `mact`) VALUES ('Làm cá lóc kho tộ', '5', 'ca-loc-kho-to-b4');
+/*insert table anh_cong_thuc*/
+	INSERT INTO `nauan`.`anh_cong_thuc` (`cong_thuc`, `anh`) VALUES ('1', 'socheca.jpg');
+	INSERT INTO `nauan`.`anh_cong_thuc` (`cong_thuc`, `anh`) VALUES ('2', 'sochenguyenlieu.jpg');
+	INSERT INTO `nauan`.`anh_cong_thuc` (`cong_thuc`, `anh`) VALUES ('3', 'uopca.jpg');
+	INSERT INTO `nauan`.`anh_cong_thuc` (`cong_thuc`, `anh`) VALUES ('4', 'nauca.jpg');
+
  
 	
