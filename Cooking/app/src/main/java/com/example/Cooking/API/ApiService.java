@@ -1,6 +1,8 @@
 package com.example.Cooking.API;
 
+import com.example.Cooking.LoginRequest;
 import com.example.Cooking.MonAn;
+import com.example.Cooking.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -9,6 +11,7 @@ import java.util.List;
 import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
 
@@ -23,5 +26,8 @@ public interface ApiService {
 
     @GET("monAn/")
     Call<List<MonAn>> getMonAnByDanhMuc(@Query("maDM") String maDM);
+
+
+    Call<User> userLogin(@Body LoginRequest loginRequest);
 
 }
