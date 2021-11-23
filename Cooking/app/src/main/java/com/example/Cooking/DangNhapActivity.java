@@ -24,7 +24,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private Button btnSignIn;
     private EditText txtUser;
     private EditText txtPassword;
-    public static User user;
+    public static User user=new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class DangNhapActivity extends AppCompatActivity {
     }
 
     private User getUser(String username) {
-        ApiService.apiService.getUser(username).enqueue(new Callback<User>() {
+        ApiService.apiService.getUser(username+"").enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 User user = response.body();
@@ -100,7 +100,7 @@ public class DangNhapActivity extends AppCompatActivity {
             intent.putExtras(bundle);
             startActivity(intent);
         } else {
-            Toast.makeText(DangNhapActivity.this, "Tên đăng nhập hoặc mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+            Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
         }
     }
 //    private void getUser(){
