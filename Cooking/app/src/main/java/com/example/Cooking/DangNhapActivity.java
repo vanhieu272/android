@@ -41,7 +41,7 @@ public class DangNhapActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = txtUser.getText().toString().trim();
                 String password = txtPassword.getText().toString().trim();
-                clickLogin(username, password);
+                getUser(username, password);
             }
         });
 
@@ -67,12 +67,29 @@ public class DangNhapActivity extends AppCompatActivity {
         });
     }
 
-    private User getUser(String username) {
+    private void getUser(String username, String password) {
         ApiService.apiService.getUser(username+"").enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                User user = response.body();
-                Log.e("User", user.getUserName() + "");
+                user = response.body();
+                Log.e("User", user.getUserName() + " " +user.getPassWord());
+                if (user == null) {
+                    Log.e("No User", "User is null");
+                    return;
+                }
+                boolean isHasUser = false;
+                if (password.trim().equals(user.getPassWord())) {
+                    isHasUser = true;
+                }
+                if (isHasUser) {
+                    Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putSerializable("objectUser", user);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                } else {
+                    Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+                }
             }
 
             @Override
@@ -81,28 +98,27 @@ public class DangNhapActivity extends AppCompatActivity {
                 Log.e("API Error", "Call API Error");
             }
         });
-        return user;
     }
-    private void clickLogin(String username, String password) {
-        user=getUser(username);
-        if (user == null) {
-            Log.e("No User", "User is null");
-            return;
-        }
-        boolean isHasUser = false;
-        if (password.equals(user.getPassWord())) {
-            isHasUser = true;
-        }
-        if (isHasUser) {
-            Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
-            Bundle bundle = new Bundle();
-            bundle.putSerializable("objectUser", user);
-            intent.putExtras(bundle);
-            startActivity(intent);
-        } else {
-            Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
-        }
-    }
+//    private void clickLogin(String username, String password) {
+//        Log.e("UserInfo",user.getUserName()+" "+user.getPassWord());
+//        if (user == null) {
+//            Log.e("No User", "User is null");
+//            return;
+//        }
+//        boolean isHasUser = false;
+//        if (password.trim().equals(user.getPassWord())) {
+//            isHasUser = true;
+//        }
+//        if (isHasUser) {
+//            Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+//            Bundle bundle = new Bundle();
+//            bundle.putSerializable("objectUser", user);
+//            intent.putExtras(bundle);
+//            startActivity(intent);
+//        } else {
+//            Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+//        }
+//    }
 //    private void getUser(){
 //        ApiService.apiService.getUser().enqueue(new Callback<List<User>>() {
 //            @Override
