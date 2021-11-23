@@ -1,6 +1,7 @@
 package com.example.Cooking.API;
 
-import com.example.Cooking.MonAn;
+import com.example.Cooking.Class.DanhMuc;
+import com.example.Cooking.Class.MonAn;
 import com.example.Cooking.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -18,10 +19,17 @@ public interface ApiService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.10:8081/")
+            .baseUrl("http://192.168.1.6:8081/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
+
+
+    @GET("danhMuc")
+    Call<List<DanhMuc>> getDanhMuc();
+
+    @GET("getAllMon")
+    Call<List<MonAn>> getAllMon();
 
     @GET("monAn/")
     Call<List<MonAn>> getMonAnByDanhMuc(@Query("maDM") String maDM);

@@ -1,0 +1,74 @@
+[
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_thong_bao.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\fragment_thong_bao.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_trang_chu.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_trang_chu.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_list2.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\fragment_list2.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dang_ky2.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_dang_ky2.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_tim_kiem.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_tim_kiem.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\item_photo.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\item_photo.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_main.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_main.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_trang_chu.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\fragment_trang_chu.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\trang_chu_activity.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\trang_chu_activity.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_list1.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\fragment_list1.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_danh_muc_con.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_danh_muc_con.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\notify_fragment.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\notify_fragment.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_tai_khoan.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\fragment_tai_khoan.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dang_nhap.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_dang_nhap.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\fragment_yeu_thich.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\fragment_yeu_thich.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_chi_tiet.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_chi_tiet.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\dong_danh_muc_con.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\dong_danh_muc_con.xml"
+    },
+    {
+        "merged": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\build\\intermediates\\incremental\\mergeDebugResources\\stripped.dir\\layout\\activity_dang_ky1.xml",
+        "source": "D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\layout\\activity_dang_ky1.xml"
+    }
+]

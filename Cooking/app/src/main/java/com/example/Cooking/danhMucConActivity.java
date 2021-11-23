@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.MonAn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -28,6 +29,7 @@ public class danhMucConActivity extends AppCompatActivity {
     List<MonAn> dmucConList;
     danhMucConAdapter danhMucConAdapter;
     private TextView txtTenDMC;
+    String[] listNhan;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,10 +38,10 @@ public class danhMucConActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
         Intent intent = getIntent();
-        String text = intent.getStringExtra("thucuong");
+        listNhan = intent.getStringArrayExtra("tenDM");
 
         txtTenDMC = findViewById(R.id.tenDMC);
-        txtTenDMC.setText(text);
+        txtTenDMC.setText(listNhan[0]);
 
         back = findViewById(R.id.back);
         back.setOnClickListener(new View.OnClickListener() {
@@ -59,40 +61,16 @@ public class danhMucConActivity extends AppCompatActivity {
             }
         });
 
-//        listView = findViewById(R.id.listView);
-//        dmucConList = new ArrayList<>();
-//        dmucConList.add(new MonAn(R.drawable.sodacam,"Soda cam","Bởi user 1", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.sodathanhlong,"Soda thanh long","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.suagao,"Sữa gạo","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.trabidao,"Trà bí đao","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.trasua,"Trà sữa","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.nhadam,"Nước nha đam","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.travai,"Trà vải","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.tradao,"Trà đào","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.milodam,"Milo dầm","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.trachanh,"Trà chanh","Bởi user 2", "100", "50"));
-//        dmucConList.add(new MonAn(R.drawable.tratac,"Trà tắc","Bởi user 2", "100", "50"));
-//
-//        dmucConList.size();
         callAPIMonAn();
-
-//        danhMucConAdapter = new danhMucConAdapter(this,R.layout.dong_danh_muc_con,dmucConList);
-//        listView.setAdapter(danhMucConAdapter);
-
-
     }
 
     private void callAPIMonAn(){
-       ApiService.apiService.getMonAnByDanhMuc("thuc-uong").enqueue(new Callback<List<MonAn>>() {
+       ApiService.apiService.getMonAnByDanhMuc(listNhan[1]).enqueue(new Callback<List<MonAn>>() {
            @Override
            public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
                List<MonAn> listMonAns = new ArrayList<>();
                listMonAns = response.body();
                listView = findViewById(R.id.listView);
-//               for (MonAn item:listMonAns) {
-//                   File file = new File("file:///D:\\Nam3_Ki1\\LTDT_Android\\bottom\\app\\src\\main\\res\\drawable","annhanh.jpg");
-//                   //Toast.makeText(danhMucConActivity.this, ""+(CharSequence) file, Toast.LENGTH_SHORT).show();
-//               }
                if(listMonAns != null){
                    danhMucConAdapter = new danhMucConAdapter(danhMucConActivity.this,R.layout.dong_danh_muc_con,listMonAns);
                    listView.setAdapter(danhMucConAdapter);
