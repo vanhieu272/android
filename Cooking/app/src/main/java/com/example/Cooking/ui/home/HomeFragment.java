@@ -118,6 +118,7 @@ public class HomeFragment extends Fragment {
                         for (int j=1; j<= soCot; j++){
                             int vitri = soCot*(i-1)+j-1;
                             MonAn monAn = list.get(vitri);
+                            //
                             //LinearLayout bao ngoài
                             LinearLayout linearLayoutTong = new LinearLayout(getActivity());
                             LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(180,LinearLayout.LayoutParams.WRAP_CONTENT);
