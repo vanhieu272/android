@@ -11,6 +11,7 @@ import retrofit2.Call;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.http.GET;
+import retrofit2.http.POST;
 import retrofit2.http.Query;
 
 public interface ApiService {
@@ -27,6 +28,9 @@ public interface ApiService {
 
     @GET("user/login/")
     Call<User> getUser(@Query("userName") String username);
+
+    @POST("user/register")
+    Call<User> createNewUser();
 
 
 //    Call<User> userLogin(@Body LoginRequest loginRequest);

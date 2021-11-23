@@ -72,9 +72,9 @@ public class DangNhapActivity extends AppCompatActivity {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
                 user = response.body();
-                Log.e("User", user.getUserName() + " " +user.getPassWord());
                 if (user == null) {
                     Log.e("No User", "User is null");
+                    Toast.makeText(DangNhapActivity.this, "Tên đăng nhập không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 boolean isHasUser = false;
@@ -82,6 +82,7 @@ public class DangNhapActivity extends AppCompatActivity {
                     isHasUser = true;
                 }
                 if (isHasUser) {
+                    Log.e("User", user.getUserName() + " " +user.getPassWord());
                     Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
                     Bundle bundle = new Bundle();
                     bundle.putSerializable("objectUser", user);
