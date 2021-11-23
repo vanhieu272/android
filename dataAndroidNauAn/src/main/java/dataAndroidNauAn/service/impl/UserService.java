@@ -1,10 +1,15 @@
 package dataAndroidNauAn.service.impl;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import dataAndroidNauAn.converter.UserConverter;
+import dataAndroidNauAn.dto.DanhMucDTO;
 import dataAndroidNauAn.dto.UserDTO;
+import dataAndroidNauAn.entity.DanhMucEntity;
 import dataAndroidNauAn.entity.UserEntity;
 import dataAndroidNauAn.repository.UserRepository;
 import dataAndroidNauAn.service.IUserService;
@@ -38,6 +43,18 @@ public class UserService implements IUserService {
 		UserEntity entity;
 		entity = repository.findOneByUserName(userName);
 		return converter.toDTO(entity);
+	}
+
+	@Override
+	public List<UserDTO> getAllUser() {
+		// TODO Auto-generated method stub
+		List<UserDTO> listDTO = new ArrayList<>();
+		List<UserEntity> listEnity = new ArrayList<>();
+		listEnity = repository.findAll();
+		for (UserEntity entity : listEnity) {
+			listDTO.add(converter.toDTO(entity));
+		}
+		return listDTO;
 	}
 
 }

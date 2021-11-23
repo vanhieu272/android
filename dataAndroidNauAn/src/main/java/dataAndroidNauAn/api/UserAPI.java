@@ -1,5 +1,7 @@
 package dataAndroidNauAn.api;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,12 +20,12 @@ public class UserAPI {
 	@Autowired
 	private UserService service;
 	
-	@PostMapping(value = "/user")
+	@PostMapping(value = "/user/register")
 	public UserDTO createUser(@RequestBody UserDTO model) {
 		return service.save(model);
 	}
 	
-	@GetMapping(value = "/user")
+	@GetMapping(value = "/user/login")
 	public UserDTO getUser(@RequestParam("userName") String userName) {
 		return service.getUser(userName);
 	}
@@ -32,5 +34,9 @@ public class UserAPI {
 	public UserDTO updateUser(@RequestBody UserDTO model, @PathVariable("id") long id) {
 		model.setId(id);
 		return service.save(model);
+	}
+	@GetMapping(value = "/user/list")
+	public List<UserDTO> ListUser() {
+		return service.getAllUser();
 	}
 }

@@ -67,7 +67,7 @@
             android:layout_marginTop="30dp">
 
             <EditText
-                android:id="@+id/txtUser"
+                android:id="@+id/txtUserLogin"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
                 android:layout_centerHorizontal="true"
@@ -77,10 +77,10 @@
                 android:textColorHint="@color/grey" />
 
             <EditText
-                android:id="@+id/txtPassword"
+                android:id="@+id/txtPasswordLogin"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/txtUser"
+                android:layout_below="@+id/txtUserLogin"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_5dp"
@@ -92,7 +92,7 @@
                 android:id="@+id/txtRepeatPassword"
                 android:layout_width="350dp"
                 android:layout_height="50dp"
-                android:layout_below="@+id/txtPassword"
+                android:layout_below="@+id/txtPasswordLogin"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
                 android:background="@drawable/border_radius_5dp"

@@ -1,8 +1,9 @@
 package com.example.Cooking;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class User {
+public class User implements Serializable {
     private Long id;
     private String userName;
     private String passWord;
@@ -14,18 +15,22 @@ public class User {
     private String sdt;
     private int status;
 
-    public User(Long id, String userName, String passWord, String anh, String hoTen, Date ngaySinh, String email, String gioiTinh, String sdt, int status) {
-        this.id = id;
-        this.userName = userName;
-        this.passWord = passWord;
-        this.anh = anh;
-        this.hoTen = hoTen;
-        this.ngaySinh = ngaySinh;
-        this.email = email;
-        this.gioiTinh = gioiTinh;
-        this.sdt = sdt;
-        this.status = status;
-    }
+//    public User(){
+//
+//    }
+//
+//    public User(Long id, String userName, String passWord, String anh, String hoTen, Date ngaySinh, String email, String gioiTinh, String sdt, int status) {
+//        this.id = id;
+//        this.userName = userName;
+//        this.passWord = passWord;
+//        this.anh = anh;
+//        this.hoTen = hoTen;
+//        this.ngaySinh = ngaySinh;
+//        this.email = email;
+//        this.gioiTinh = gioiTinh;
+//        this.sdt = sdt;
+//        this.status = status;
+//    }
 
     public Long getId() {
         return id;
