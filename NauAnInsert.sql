@@ -14,6 +14,19 @@
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('salad', 'Salad');
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-lau', 'Món lẩu');
 
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monchinh.jpg' WHERE (`id` = '1');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monga.jpg' WHERE (`id` = '2');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monbo.png' WHERE (`id` = '3');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monheo.png' WHERE (`id` = '4');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monchay.jpg' WHERE (`id` = '5');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monnhat.jpg' WHERE (`id` = '6');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'annhanh.jpg' WHERE (`id` = '7');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'lambanh.jpg' WHERE (`id` = '8');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'thucuong.jpg' WHERE (`id` = '9');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'diemtam.jpg' WHERE (`id` = '10');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'salad.jpg' WHERE (`id` = '11');
+	anh_cong_thucUPDATE `nauan`.`danh_muc` SET `anh` = 'monlau.jpg' WHERE (`id` = '12');
+
 /*insert table monan*/
 	INSERT INTO `nauan`.`mon_an` (`anh`, `luot_thich`, `luot_xem`, `ma_mon`, `nguoi_dang`, `ten_mon`, `madm`) VALUES ('travai.jpg', '100', '100', 'tra-vai', 'user1', 'Trà vải', '9');
 	INSERT INTO `nauan`.`mon_an` (`anh`, `luot_thich`, `luot_xem`, `ma_mon`, `nguoi_dang`, `ten_mon`, `madm`) VALUES ('tradao.jpg', '100', '200', 'tra-dao', 'user2', 'Trà đào', '9');

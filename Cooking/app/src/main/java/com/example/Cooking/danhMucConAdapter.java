@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.Cooking.Class.MonAn;
 
 import java.util.List;
 
@@ -16,6 +17,7 @@ public class danhMucConAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<MonAn> dmucConList;
+    String localhost = "http://192.168.1.6:8081/image/";
 
     public danhMucConAdapter(Context context, int layout, List<MonAn> dmucConList) {
         this.context = context;
@@ -53,18 +55,10 @@ public class danhMucConAdapter extends BaseAdapter {
         nguoiDang.setText(sv.getNguoiDang());
         luotXem.setText(sv.getLuotXem());
         luotThich.setText(sv.getLuotThich());
-        //hinh.setImageResource(Integer.parseInt("R.drawable."+sv.getAnh()));
 
 
-        Glide.with(context).load("http://192.168.1.7:8081/image/"+sv.getAnh()).into(hinh);
+        Glide.with(context).load(localhost+sv.getAnh()).into(hinh);
 
-//        ImageButton imgBtYeuThich = view.findViewById(R.id.imgBtYeuThich);
-//        imgBtYeuThich.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                imgBtYeuThich.setImageResource(R.drawable.ic_baseline_favorite_red);
-//            }
-//        });
         return view;
     }
 }
