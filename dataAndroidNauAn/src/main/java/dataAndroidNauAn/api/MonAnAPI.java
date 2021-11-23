@@ -33,4 +33,9 @@ public class MonAnAPI {
 		return service.getByMaMon(maMon);
 	}
 	
+	@GetMapping(value = "/getAllMon")
+	public List<MonAnDTO> getAllMon(){
+		return service.getAllMon();
+	}
+	
 }

@@ -27,6 +27,9 @@ public interface ApiService {
     @GET("danhMuc")
     Call<List<DanhMuc>> getDanhMuc();
 
+    @GET("getAllMon")
+    Call<List<MonAn>> getAllMon();
+
     @GET("monAn/")
     Call<List<MonAn>> getMonAnByDanhMuc(@Query("maDM") String maDM);
 

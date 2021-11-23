@@ -95,6 +95,17 @@ public class MonAnService implements IMonAnService{
 		return converter.toDTO(monAnEntity);
 	}
 
+	@Override
+	public List<MonAnDTO> getAllMon() {
+		List<MonAnEntity> listEntity = new ArrayList<>();
+		List<MonAnDTO> listDTO = new ArrayList<>();
+		listEntity = repository.findAll();
+		for (MonAnEntity entity : listEntity) {
+			listDTO.add(converter.toDTO(entity));
+		}
+		return listDTO;
+	}
+
 	
 	
 }
