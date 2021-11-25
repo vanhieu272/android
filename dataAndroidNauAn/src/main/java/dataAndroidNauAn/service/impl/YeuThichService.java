@@ -6,10 +6,14 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import dataAndroidNauAn.converter.MonAnConverter;
 import dataAndroidNauAn.converter.YeuThichConverter;
+import dataAndroidNauAn.dto.MonAnDTO;
 import dataAndroidNauAn.dto.YeuThichDTO;
+import dataAndroidNauAn.entity.MonAnEntity;
 import dataAndroidNauAn.entity.UserEntity;
 import dataAndroidNauAn.entity.YeuThichEntity;
+import dataAndroidNauAn.repository.MonAnRepository;
 import dataAndroidNauAn.repository.UserRepository;
 import dataAndroidNauAn.repository.YeuThichRepository;
 import dataAndroidNauAn.service.IYeuThichService;
@@ -26,6 +30,12 @@ public class YeuThichService implements IYeuThichService{
 	@Autowired
 	UserRepository userRepository;
 	
+	@Autowired
+	MonAnRepository monAnRepository;
+	
+	@Autowired
+	MonAnConverter monConverter;
+	
 	@Override
 	public YeuThichDTO save(YeuThichDTO model) {
 		YeuThichEntity entity = converter.toEntity(model);
@@ -36,14 +46,17 @@ public class YeuThichService implements IYeuThichService{
 	}
 
 	@Override
-	public List<YeuThichDTO> getYeuThichByUser(String user) {
+	public List<MonAnDTO> getMonYeuThichByUser(String user) {
 		UserEntity userEntity = userRepository.findOneByUserName(user);
 		List<YeuThichEntity> listEntities = repository.findByUserYT(userEntity);
-		List<YeuThichDTO> listDTO = new ArrayList<>();
+		List<MonAnDTO> listMonDTO = new ArrayList<>();
 		for (YeuThichEntity entity : listEntities) {
-			listDTO.add(converter.toDTO(entity));
+			MonAnEntity monAnEntity = new MonAnEntity();
+			monAnEntity = monAnRepository.findOneByMaMon(entity.getMaMon());
+			listMonDTO.add(monConverter.toDTO(monAnEntity));
+			
 		}
-		return listDTO;
+		return listMonDTO;
 	}
 
 	@Override
@@ -58,6 +71,33 @@ public class YeuThichService implements IYeuThichService{
 			}
 		}
 		return listUser;
+	}
+
+	@Override
+	public List<YeuThichDTO> getYeuThichByUser(String user) {
+		UserEntity userEntity = userRepository.findOneByUserName(user);
+		List<YeuThichEntity> listEntities = repository.findByUserYT(userEntity);
+		List<YeuThichDTO> listDTO = new ArrayList<>();
+		for (YeuThichEntity entity : listEntities) {
+			listDTO.add(converter.toDTO(entity));
+		}
+		return listDTO;
+	}
+
+	@Override
+	public void delete(Long id) {
+		repository.delete(id);
+	}
+
+	@Override
+	public YeuThichDTO getYeuThichByMaMon(String maMon, String user) {
+		List<YeuThichDTO> yeuThichDTOs = getYeuThichByUser(user);
+		for (YeuThichDTO yeuThichDTO : yeuThichDTOs) {
+			if(yeuThichDTO.getMaMon().equals(maMon)) {
+				return yeuThichDTO;
+			}
+		}
+		return null;
 	}
 
 }

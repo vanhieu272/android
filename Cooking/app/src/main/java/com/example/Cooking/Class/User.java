@@ -1,4 +1,4 @@
-package com.example.Cooking;
+package com.example.Cooking.Class;
 
 import java.io.Serializable;
 import java.util.Date;

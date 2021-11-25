@@ -1,7 +1,6 @@
 
 /*insert table danhmuc*/
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-chinh', 'Món chính');
-	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-nuong', 'Món nướng');
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-ga', 'Món gà');
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-bo', 'Món bò');
 	INSERT INTO `nauan`.`danh_muc` (`madm`, `tendm`) VALUES ('mon-heo', 'Món heo');
@@ -25,7 +24,7 @@
 	UPDATE `nauan`.`danh_muc` SET `anh` = 'thucuong.jpg' WHERE (`id` = '9');
 	UPDATE `nauan`.`danh_muc` SET `anh` = 'diemtam.jpg' WHERE (`id` = '10');
 	UPDATE `nauan`.`danh_muc` SET `anh` = 'salad.jpg' WHERE (`id` = '11');
-	anh_cong_thucUPDATE `nauan`.`danh_muc` SET `anh` = 'monlau.jpg' WHERE (`id` = '12');
+	UPDATE `nauan`.`danh_muc` SET `anh` = 'monlau.jpg' WHERE (`id` = '12');
 
 /*insert table monan*/
 	INSERT INTO `nauan`.`mon_an` (`anh`, `luot_thich`, `luot_xem`, `ma_mon`, `nguoi_dang`, `ten_mon`, `madm`) VALUES ('travai.jpg', '100', '100', 'tra-vai', 'user1', 'Trà vải', '9');

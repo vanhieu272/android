@@ -1,8 +1,11 @@
 package com.example.Cooking;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.WindowManager;
+import android.widget.Toast;
 
+import com.example.Cooking.Class.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,7 @@ import com.example.Cooking.databinding.ActivityTrangChuBinding;
 public class TrangChuActivity extends AppCompatActivity {
 
     private ActivityTrangChuBinding binding;
+    public static String userName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +40,14 @@ public class TrangChuActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_main);
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+        Intent intent = getIntent();
+        Bundle bundle = intent.getExtras();
+        if(bundle != null){
+            User user = (User) bundle.getSerializable("objectUser");
+            userName = user.getUserName();
+        }
+
     }
 
 }

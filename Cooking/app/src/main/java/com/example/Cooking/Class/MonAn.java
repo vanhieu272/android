@@ -3,10 +3,14 @@ package com.example.Cooking.Class;
 public class MonAn {
     private String anh;
     private String tenMon;
+    private String maMon;
     private String nguoiDang;
     private String luotXem;
     private String luotThich;
 
+    public MonAn(){
+
+    }
     public MonAn(String hinh, String tenMon, String nguoiDang, String luotXem, String luotThich) {
         this.anh = hinh;
         this.tenMon = tenMon;
@@ -53,5 +57,13 @@ public class MonAn {
 
     public void setLuotThich(String luotThich) {
         this.luotThich = luotThich;
+    }
+
+    public String getMaMon() {
+        return maMon;
+    }
+
+    public void setMaMon(String maMon) {
+        this.maMon = maMon;
     }
 }

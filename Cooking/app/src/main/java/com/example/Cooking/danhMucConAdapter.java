@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.Cooking.Class.IP;
 import com.example.Cooking.Class.MonAn;
 
 import java.util.List;
@@ -17,7 +18,6 @@ public class danhMucConAdapter extends BaseAdapter {
     private Context context;
     private int layout;
     private List<MonAn> dmucConList;
-    String localhost = "http://192.168.1.6:8081/image/";
 
     public danhMucConAdapter(Context context, int layout, List<MonAn> dmucConList) {
         this.context = context;
@@ -57,7 +57,7 @@ public class danhMucConAdapter extends BaseAdapter {
         luotThich.setText(sv.getLuotThich());
 
 
-        Glide.with(context).load(localhost+sv.getAnh()).into(hinh);
+        Glide.with(context).load(IP.localhostHinhAnh+sv.getAnh()).into(hinh);
 
         return view;
     }

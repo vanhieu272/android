@@ -9,5 +9,5 @@ import dataAndroidNauAn.entity.YeuThichEntity;
 
 public interface YeuThichRepository extends JpaRepository<YeuThichEntity, Long>{
 	List<YeuThichEntity> findByUserYT(UserEntity user);
-
+	YeuThichEntity findOneByMaMon(String maMon);
 }
