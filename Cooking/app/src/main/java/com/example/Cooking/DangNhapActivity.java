@@ -25,7 +25,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private Button btnSignIn;
     private EditText txtUser;
     private EditText txtPassword;
-    public static User user=new User();
+    private User user=new User();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,7 +42,15 @@ public class DangNhapActivity extends AppCompatActivity {
             public void onClick(View v) {
                 String username = txtUser.getText().toString().trim();
                 String password = txtPassword.getText().toString().trim();
-                getUser(username, password);
+                if (!username.isEmpty() && !password.isEmpty())
+                {
+                    getUser(username, password);
+                }
+                else{
+                    Toast.makeText(DangNhapActivity.this, "Vui lòng nhập tên đăng nhập và mật khẩu", Toast.LENGTH_SHORT).show();
+                    Log.e("API Error", "username or password null");
+                    return;
+                }
             }
         });
 
@@ -74,13 +82,17 @@ public class DangNhapActivity extends AppCompatActivity {
             public void onResponse(Call<User> call, Response<User> response) {
                 user = response.body();
                 if (user == null) {
+                    Toast.makeText(DangNhapActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
                     Log.e("No User", "User is null");
-                    Toast.makeText(DangNhapActivity.this, "Tên đăng nhập không hợp lệ", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 boolean isHasUser = false;
                 if (password.trim().equals(user.getPassWord())) {
                     isHasUser = true;
+                }
+                else
+                {
+                    Toast.makeText(DangNhapActivity.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
                 }
                 if (isHasUser) {
                     Log.e("User", user.getUserName() + " " +user.getPassWord());

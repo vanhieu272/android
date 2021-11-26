@@ -83,6 +83,7 @@
                 android:layout_below="@+id/txtUserLogin"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="20dp"
+                android:inputType="textPassword"
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/pasword"
                 android:paddingLeft="10dp"
@@ -98,6 +99,7 @@
                 android:background="@drawable/border_radius_5dp"
                 android:hint="@string/repeatPass"
                 android:paddingLeft="10dp"
+                android:inputType="textPassword"
                 android:textColorHint="@color/grey" />
 
             <TextView
