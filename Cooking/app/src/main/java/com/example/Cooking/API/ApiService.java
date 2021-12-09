@@ -22,7 +22,7 @@ public interface ApiService {
     Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
 
     ApiService apiService = new Retrofit.Builder()
-            .baseUrl("http://192.168.1.10:8081/")
+            .baseUrl("http://192.168.1.8:8081/")
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build()
             .create(ApiService.class);
@@ -52,8 +52,11 @@ public interface ApiService {
     @GET("motMonAn/")
     Call<MonAn> getMotMon(@Query("maMon") String maMon);
 
-    @GET("user/login/")
-    Call<User> getUser(@Query("userName") String username);
+    @POST("user/login")
+    Call<User> loginUser(@Body User userLogin);
+
+    @GET("user/")
+    Call<String> getUserInfor(@Query("userName") String username);
 
     @POST("user/register")
     Call<User> registerUser(@Body User newUser);

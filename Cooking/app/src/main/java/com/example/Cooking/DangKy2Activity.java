@@ -66,21 +66,21 @@ public class DangKy2Activity extends AppCompatActivity {
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e("User", userSignUp.getUserName()+"");
+                Log.e("User", userSignUp.getUserName()+" "+userSignUp.getPassWord());
                 String lastname = txtLastName.getText().toString()+" ";
                 String firstname=txtFirstName.getText().toString();
                 String dob=txtDob.getText().toString();
                 String phone=txtPhone.getText().toString();
                 String email=txtEmail.getText().toString();
                 String hoten=lastname.concat(firstname);
-                userSignUp.setId(null);
+//                userSignUp.setId(null);
                 userSignUp.setHoTen(hoten);
                 userSignUp.setEmail(email);
                 userSignUp.setSdt(phone);
                 userSignUp.setNgaySinh(dob);
-                userSignUp.setAnh("");
-                userSignUp.setGioiTinh("");
-                userSignUp.setGioiTinh("");
+//                userSignUp.setAnh("");
+//                userSignUp.setGioiTinh("");
+//                userSignUp.setGioiTinh("");
                 Log.e("User SignUp",userSignUp.getUserName()+" "+userSignUp.getHoTen());
                 clickSignUp(userSignUp);
             }

@@ -25,7 +25,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private Button btnSignIn;
     private EditText txtUser;
     private EditText txtPassword;
-    private User user=new User();
+    private User userSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,7 +44,11 @@ public class DangNhapActivity extends AppCompatActivity {
                 String password = txtPassword.getText().toString().trim();
                 if (!username.isEmpty() && !password.isEmpty())
                 {
-                    getUser(username, password);
+                    User loginUser=new User();
+                    loginUser.setUserName(username);
+                    loginUser.setPassWord(password);
+                    Log.e("User",  " " +loginUser.getPassWord());
+                    clickLogin(loginUser);
                 }
                 else{
                     Toast.makeText(DangNhapActivity.this, "Vui lòng nhập tên đăng nhập và mật khẩu", Toast.LENGTH_SHORT).show();
@@ -76,24 +80,20 @@ public class DangNhapActivity extends AppCompatActivity {
         });
     }
 
-    private void getUser(String username, String password) {
-        ApiService.apiService.getUser(username+"").enqueue(new Callback<User>() {
+    private void clickLogin(User UserLogin) {
+        ApiService.apiService.loginUser(UserLogin).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
-                user = response.body();
+                User user = response.body();
                 if (user == null) {
                     Toast.makeText(DangNhapActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
                     Log.e("No User", "User is null");
                     return;
                 }
-                boolean isHasUser = false;
-                if (password.trim().equals(user.getPassWord())) {
-                    isHasUser = true;
-                }
-                else
-                {
-                    Toast.makeText(DangNhapActivity.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
-                }
+                boolean isHasUser = true;
+//                if (UserLogin.getPassWord().trim().equals(user.getPassWord())) {
+//                    isHasUser = true;
+//                }
                 if (isHasUser) {
                     Log.e("User", user.getUserName() + " " +user.getPassWord());
                     Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
@@ -103,15 +103,52 @@ public class DangNhapActivity extends AppCompatActivity {
                     startActivity(intent);
                 } else {
                     Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+                    Log.e("User",  " " +user.getPassWord());
                 }
             }
 
             @Override
             public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(DangNhapActivity.this, "Call API Error", Toast.LENGTH_SHORT).show();
-                Log.e("API Error", "Call API Error");
+//                Toast.makeText(DangNhapActivity.this, "Call API Error", Toast.LENGTH_SHORT).show();
+                Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+                Log.e("API Error", "Call API Error. Mật khẩu k hợp lệ");
             }
         });
+//        ApiService.apiService.getUser(loginUser).enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                User user = response.body();
+//                if (user == null) {
+//                    Toast.makeText(DangNhapActivity.this, "Tài khoản không tồn tại", Toast.LENGTH_SHORT).show();
+//                    Log.e("No User", "User is null");
+//                    return;
+//                }
+//                boolean isHasUser = false;
+//                if (loginUser.getPassWord().trim().equals(user.getPassWord())) {
+//                    isHasUser = true;
+//                }
+//                else
+//                {
+//                    Toast.makeText(DangNhapActivity.this, "Mật khẩu không chính xác", Toast.LENGTH_SHORT).show();
+//                }
+//                if (isHasUser) {
+//                    Log.e("User", user.getUserName() + " " +user.getPassWord());
+//                    Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("objectUser", user);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                } else {
+//                    Toast.makeText(DangNhapActivity.this, "Mật khẩu không hợp lệ", Toast.LENGTH_SHORT).show();
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//                Toast.makeText(DangNhapActivity.this, "Call API Error", Toast.LENGTH_SHORT).show();
+//                Log.e("API Error", "Call API Error");
+//            }
+//        });
     }
 //    private void clickLogin(String username, String password) {
 //        Log.e("UserInfo",user.getUserName()+" "+user.getPassWord());

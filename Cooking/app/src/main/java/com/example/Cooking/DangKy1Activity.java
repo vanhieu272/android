@@ -26,6 +26,7 @@ public class DangKy1Activity extends AppCompatActivity {
     private EditText txtPassword;
     private EditText txtPassword2nd;
     private User userSignUp;
+    private String existUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,15 +73,15 @@ public class DangKy1Activity extends AppCompatActivity {
         });
     }
     private void clickNext(String username, String password){
-        ApiService.apiService.getUser(username+"").enqueue(new Callback<User>() {
+        ApiService.apiService.getUserInfor(username).enqueue(new Callback<String>() {
             @Override
-            public void onResponse(Call<User> call, Response<User> response) {
-                userSignUp = response.body();
-                if (userSignUp != null) {
+            public void onResponse(Call<String> call, Response<String> response) {
+                existUser=response.body();
+                if (existUser!=null) {
                     Log.e("User account existed", "User account existed");
                     Toast.makeText(DangKy1Activity.this, "User account existed", Toast.LENGTH_SHORT).show();
                 }
-                if (userSignUp==null)
+                else
                 {
 //                    String txtusername=txtUsername.getText().toString().trim();
 //                    String txtpassword=txtPassword.getText().toString().trim();
@@ -97,10 +98,42 @@ public class DangKy1Activity extends AppCompatActivity {
             }
 
             @Override
-            public void onFailure(Call<User> call, Throwable t) {
-                Toast.makeText(DangKy1Activity.this, "Call API Error", Toast.LENGTH_SHORT).show();
-                Log.e("API Error", "Call API Error");
+            public void onFailure(Call<String> call, Throwable t) {
+//                Toast.makeText(DangKy1Activity.this, "Call API Error", Toast.LENGTH_SHORT).show();
+//                Log.e("API Error", "Call API Error");
+                Log.e("User account existed", "User account existed");
+                Toast.makeText(DangKy1Activity.this, "User account existed", Toast.LENGTH_SHORT).show();
             }
         });
+//        ApiService.apiService.getUser(username+"").enqueue(new Callback<User>() {
+//            @Override
+//            public void onResponse(Call<User> call, Response<User> response) {
+//                userSignUp = response.body();
+//                if (userSignUp != null) {
+//                    Log.e("User account existed", "User account existed");
+//                    Toast.makeText(DangKy1Activity.this, "User account existed", Toast.LENGTH_SHORT).show();
+//                }
+//                if (userSignUp==null)
+//                {
+////                    String txtusername=txtUsername.getText().toString().trim();
+////                    String txtpassword=txtPassword.getText().toString().trim();
+//                    userSignUp=new User();
+//                    userSignUp.setUserName(username);
+//                    userSignUp.setPassWord(password);
+//                    Log.e("User", userSignUp.getUserName()+"");
+//                    Intent intent = new Intent(DangKy1Activity.this, DangKy2Activity.class);
+//                    Bundle bundle = new Bundle();
+//                    bundle.putSerializable("objectNewUser", userSignUp);
+//                    intent.putExtras(bundle);
+//                    startActivity(intent);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<User> call, Throwable t) {
+//                Toast.makeText(DangKy1Activity.this, "Call API Error", Toast.LENGTH_SHORT).show();
+//                Log.e("API Error", "Call API Error");
+//            }
+//        });
     }
 }

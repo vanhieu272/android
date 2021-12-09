@@ -1,5 +1,5 @@
 package com.example.Cooking.Class;
 
 public class IP {
-    public static String localhostHinhAnh = "http://192.168.1.10:8081/image/";
+    public static String localhostHinhAnh = "http://192.168.1.8:8081/image/";
 }
