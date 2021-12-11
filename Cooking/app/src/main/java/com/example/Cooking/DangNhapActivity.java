@@ -25,7 +25,7 @@ public class DangNhapActivity extends AppCompatActivity {
     private Button btnSignIn;
     private EditText txtUser;
     private EditText txtPassword;
-    private User userSignIn;
+//    private User userSignIn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

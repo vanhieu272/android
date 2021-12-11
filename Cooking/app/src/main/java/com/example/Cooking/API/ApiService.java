@@ -53,13 +53,13 @@ public interface ApiService {
     Call<MonAn> getMotMon(@Query("maMon") String maMon);
 
     @POST("user/login")
-    Call<User> loginUser(@Body User userLogin);
+    Call<User> loginUser(@Body User user);
 
     @GET("user/")
     Call<String> getUserInfor(@Query("userName") String username);
 
     @POST("user/register")
-    Call<User> registerUser(@Body User newUser);
+    Call<User> registerUser(@Body User user);
 
 
 //    Call<User> userLogin(@Body LoginRequest loginRequest);

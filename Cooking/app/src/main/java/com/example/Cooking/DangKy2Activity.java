@@ -77,10 +77,10 @@ public class DangKy2Activity extends AppCompatActivity {
                 userSignUp.setHoTen(hoten);
                 userSignUp.setEmail(email);
                 userSignUp.setSdt(phone);
-                userSignUp.setNgaySinh(dob);
+//                userSignUp.setNgaySinh(dob);
 //                userSignUp.setAnh("");
 //                userSignUp.setGioiTinh("");
-//                userSignUp.setGioiTinh("");
+                userSignUp.setStatus(1);
                 Log.e("User SignUp",userSignUp.getUserName()+" "+userSignUp.getHoTen());
                 clickSignUp(userSignUp);
             }
@@ -98,6 +98,9 @@ public class DangKy2Activity extends AppCompatActivity {
         ApiService.apiService.registerUser(newUser).enqueue(new Callback<User>() {
             @Override
             public void onResponse(Call<User> call, Response<User> response) {
+                Log.e("Register", newUser.getUserName()+" "+newUser.getPassWord());
+                User user = response.body();
+                Log.e("Error register", response.message()+" ");
                 if (response.isSuccessful())
                 {
                     Toast.makeText(DangKy2Activity.this, "Đăng ký thành công. Vui lòng đăng nhập để tiếp tục", Toast.LENGTH_SHORT).show();
@@ -108,8 +111,7 @@ public class DangKy2Activity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(DangKy2Activity.this, "Đăng ký k thành công", Toast.LENGTH_SHORT).show();
-                    Log.e("Register not success", "Register is not successful");
-                    Log.e("Register not success", newUser.getUserName()+"");
+                    Log.e("Register not success", "Register is not successful"+newUser.getUserName());
                 }
             }
 
