@@ -1,7 +1,6 @@
 package com.example.Cooking.Class;
 
 import java.io.Serializable;
-import java.util.Date;
 
 public class User implements Serializable {
     private Long id;
@@ -9,7 +8,7 @@ public class User implements Serializable {
     private String passWord;
     private String anh;
     private String hoTen;
-    private Date ngaySinh;
+    private String ngaySinh;
     private String email;
     private String gioiTinh;
     private String sdt;
@@ -72,11 +71,11 @@ public class User implements Serializable {
         this.hoTen = hoTen;
     }
 
-    public Date getNgaySinh() {
+    public String getNgaySinh() {
         return ngaySinh;
     }
 
-    public void setNgaySinh(Date ngaySinh) {
+    public void setNgaySinh(String ngaySinh) {
         this.ngaySinh = ngaySinh;
     }
 

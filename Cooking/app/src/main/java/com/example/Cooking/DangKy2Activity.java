@@ -18,6 +18,7 @@ import com.example.Cooking.Class.User;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -29,6 +30,7 @@ public class DangKy2Activity extends AppCompatActivity {
     private Button btnSignIn, btnSignUp;
     private EditText txtFirstName, txtLastName, txtDob, txtPhone, txtEmail;
     private User userSignUp;
+//    private static final SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -69,7 +71,16 @@ public class DangKy2Activity extends AppCompatActivity {
                 Log.e("User", userSignUp.getUserName()+" "+userSignUp.getPassWord());
                 String lastname = txtLastName.getText().toString()+" ";
                 String firstname=txtFirstName.getText().toString();
-                String dob=txtDob.getText().toString();
+                String txtdob= txtDob.getText().toString();
+                Date dob=new Date(txtdob);
+                SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String Dob = formatter.format(dob);
+//                Date DateOB= null;
+//                try {
+//                    DateOB = new SimpleDateFormat("MM/dd/yyyy").parse(dob);
+//                } catch (ParseException e) {
+//                    e.printStackTrace();
+//                }
                 String phone=txtPhone.getText().toString();
                 String email=txtEmail.getText().toString();
                 String hoten=lastname.concat(firstname);
@@ -77,7 +88,7 @@ public class DangKy2Activity extends AppCompatActivity {
                 userSignUp.setHoTen(hoten);
                 userSignUp.setEmail(email);
                 userSignUp.setSdt(phone);
-//                userSignUp.setNgaySinh(dob);
+                userSignUp.setNgaySinh(Dob);
 //                userSignUp.setAnh("");
 //                userSignUp.setGioiTinh("");
                 userSignUp.setStatus(1);
@@ -111,7 +122,7 @@ public class DangKy2Activity extends AppCompatActivity {
                 }
                 else {
                     Toast.makeText(DangKy2Activity.this, "Đăng ký k thành công", Toast.LENGTH_SHORT).show();
-                    Log.e("Register not success", "Register is not successful"+newUser.getUserName());
+                    Log.e("Register not success", "Register is not successful"+" "+newUser.getUserName());
                 }
             }
 
