@@ -5,12 +5,14 @@ public class CongThuc {
     private String congThuc;
     private String maCT;
     private String monCT;
+    private String anhCT;
 
-    public CongThuc(Long id, String congThuc, String maCT, String monCT) {
+    public CongThuc(Long id, String congThuc, String maCT, String monCT, String anhCT) {
         this.id = id;
         this.congThuc = congThuc;
         this.maCT = maCT;
         this.monCT = monCT;
+        this.anhCT = anhCT;
     }
 
     public Long getId() {
@@ -43,5 +45,13 @@ public class CongThuc {
 
     public void setMonCT(String monCT) {
         this.monCT = monCT;
+    }
+
+    public String getAnhCT() {
+        return anhCT;
+    }
+
+    public void setAnhCT(String anhCT) {
+        this.anhCT = anhCT;
     }
 }

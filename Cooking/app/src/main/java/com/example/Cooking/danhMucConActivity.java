@@ -73,8 +73,10 @@ public class danhMucConActivity extends AppCompatActivity {
                 TextView txtTenMon = view.findViewById(R.id.tenMon);
                 String tenMon = String.valueOf(txtTenMon.getText());
                 Intent intent = new Intent(danhMucConActivity.this, ChiTietActivity.class);
-
-                intent.putExtra("mon",monAn);
+                Bundle bundle = new Bundle();
+                bundle.putString("maDM",listNhan[1]);
+                bundle.putSerializable("mon",monAn);
+                intent.putExtra("bundle",bundle);
                 startActivity(intent);
             }
         });

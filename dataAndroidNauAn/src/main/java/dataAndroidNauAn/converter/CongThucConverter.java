@@ -12,6 +12,7 @@ public class CongThucConverter {
 		CongThucEntity entity = new CongThucEntity();
 		entity.setCongThuc(dto.getCongThuc());
 		entity.setMaCT(dto.getMaCT());
+		entity.setAnhCT(dto.getAnhCT());
 		return entity;
 	}
 	
@@ -21,6 +22,7 @@ public class CongThucConverter {
 		dto.setCongThuc(entity.getCongThuc());
 		dto.setMonCT(entity.getMon().getMaMon());
 		dto.setMaCT(entity.getMaCT());
+		dto.setAnhCT(entity.getAnhCT());
 		return dto;
 	}
 }

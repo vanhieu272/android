@@ -1,5 +1,6 @@
 package com.example.Cooking.API;
 
+import com.example.Cooking.Class.AnhCongThuc;
 import com.example.Cooking.Class.CongThuc;
 import com.example.Cooking.Class.DanhMuc;
 import com.example.Cooking.Class.HistoryFind;
@@ -68,7 +69,6 @@ public interface ApiService {
     @GET("congThuc")
     Call<List<CongThuc>> getCongThucByMaMon(@Query("maMon") String maMon);
 
-    //get anh cong thuc
 
 
     @POST("user/login")

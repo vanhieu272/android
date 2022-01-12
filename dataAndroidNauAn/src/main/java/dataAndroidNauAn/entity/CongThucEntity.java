@@ -27,6 +27,9 @@ public class CongThucEntity {
 	@Column(name = "maCT")
 	private String maCT;
 	
+	@Column(name = "anhCT")
+	private String anhCT;
+	
 	@OneToMany(mappedBy = "cThuc")
 	private List<AnhCongThucEntity> listAnh = new ArrayList<>();
 	
@@ -81,6 +84,15 @@ public class CongThucEntity {
 	public void setMonCT(MonAnEntity monCT) {
 		this.monCT = monCT;
 	}
+
+	public String getAnhCT() {
+		return anhCT;
+	}
+
+	public void setAnhCT(String anhCT) {
+		this.anhCT = anhCT;
+	}
+	
 	
 	
 	
