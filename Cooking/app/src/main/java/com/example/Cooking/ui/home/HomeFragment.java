@@ -123,14 +123,14 @@ public class HomeFragment extends Fragment {
                                 monAn = LoadDuLieu.listMonAn.get(vitri);
                                 //LinearLayout bao ngoài
                                 LinearLayout linearLayoutTong = new LinearLayout(getActivity());
-                                LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(180,LinearLayout.LayoutParams.WRAP_CONTENT);
+                                LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(300,LinearLayout.LayoutParams.WRAP_CONTENT);
                                 layoutParamsTong.setMargins(45,0,0,0);
                                 linearLayoutTong.setLayoutParams(layoutParamsTong);
                                 linearLayoutTong.setOrientation(LinearLayout.VERTICAL);
 
                                 //set ảnh
                                 LinearLayout linearLayout = new LinearLayout(getActivity());
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,180);
+                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,300);
                                 linearLayout.setLayoutParams(layoutParams);
                                 ImageView imageView = new ImageView(getActivity());
                                 Glide.with(getContext()).load(IP.localhostHinhAnh+monAn.getAnh()).into(imageView);

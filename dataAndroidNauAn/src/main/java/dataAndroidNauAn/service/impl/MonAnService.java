@@ -106,6 +106,21 @@ public class MonAnService implements IMonAnService{
 		return listDTO;
 	}
 
+	@Override
+	public List<MonAnDTO> findMon(String key) {
+		List<MonAnEntity> listEntity = new ArrayList<>();
+		List<MonAnDTO> listDTO = new ArrayList<>();
+		listEntity = repository.findAll();
+		for (MonAnEntity entity : listEntity) {
+		
+			if(entity.getTenMon().toLowerCase().contains(key.toLowerCase())) {
+				listDTO.add(converter.toDTO(entity));
+			}
+			
+		}
+		return listDTO;
+	}
+
 	
 	
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -26,7 +27,7 @@ public class danhMucConActivity extends AppCompatActivity {
 
     ImageButton back, search;
     ListView listView;
-    List<MonAn> dmucConList;
+    List<MonAn> listMonAns;
     danhMucConAdapter danhMucConAdapter;
     private TextView txtTenDMC;
     String[] listNhan;
@@ -61,16 +62,31 @@ public class danhMucConActivity extends AppCompatActivity {
             }
         });
 
+        listView = findViewById(R.id.listView);
         callAPIMonAn();
+
+        //chọn món - xem chi tiết món
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MonAn monAn = listMonAns.get(position);
+                TextView txtTenMon = view.findViewById(R.id.tenMon);
+                String tenMon = String.valueOf(txtTenMon.getText());
+                Intent intent = new Intent(danhMucConActivity.this, ChiTietActivity.class);
+
+                intent.putExtra("mon",monAn);
+                startActivity(intent);
+            }
+        });
     }
 
     private void callAPIMonAn(){
        ApiService.apiService.getMonAnByDanhMuc(listNhan[1]).enqueue(new Callback<List<MonAn>>() {
            @Override
            public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
-               List<MonAn> listMonAns = new ArrayList<>();
+               listMonAns = new ArrayList<>();
                listMonAns = response.body();
-               listView = findViewById(R.id.listView);
+
                if(listMonAns != null){
                    danhMucConAdapter = new danhMucConAdapter(danhMucConActivity.this,R.layout.dong_danh_muc_con,listMonAns);
                    listView.setAdapter(danhMucConAdapter);

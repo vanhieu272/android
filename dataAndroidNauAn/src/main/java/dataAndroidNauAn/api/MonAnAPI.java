@@ -38,4 +38,9 @@ public class MonAnAPI {
 		return service.getAllMon();
 	}
 	
+	@GetMapping(value = "/find")
+	public List<MonAnDTO> findMon(@RequestParam("key") String key){
+		return service.findMon(key);
+	}
+	
 }

@@ -34,7 +34,7 @@ public class UserEntity {
 	private String hoTen;
 	
 	@Column(name = "ngaySinh")
-	private Date ngaySinh;
+	private String ngaySinh;
 	
 	@Column(name = "email")
 	private String email;
@@ -53,6 +53,17 @@ public class UserEntity {
 	
 	@OneToMany(mappedBy = "userTB")
 	private List<ThongBaoEntity> listThongBao = new ArrayList<>();
+	
+	@OneToMany(mappedBy = "userLS")
+	private List<LichSuTimKiemEntity> listLichSu = new ArrayList<>();
+
+	public List<LichSuTimKiemEntity> getListLichSu() {
+		return listLichSu;
+	}
+
+	public void setListLichSu(List<LichSuTimKiemEntity> listLichSu) {
+		this.listLichSu = listLichSu;
+	}
 
 	public Long getId() {
 		return id;
@@ -96,11 +107,13 @@ public class UserEntity {
 		this.hoTen = hoTen;
 	}
 
-	public Date getNgaySinh() {
+	
+
+	public String getNgaySinh() {
 		return ngaySinh;
 	}
 
-	public void setNgaySinh(Date ngaySinh) {
+	public void setNgaySinh(String ngaySinh) {
 		this.ngaySinh = ngaySinh;
 	}
 

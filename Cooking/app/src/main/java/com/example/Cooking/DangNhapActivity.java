@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.MD5;
 import com.example.Cooking.Class.User;
 
 import retrofit2.Call;
@@ -40,11 +41,11 @@ public class DangNhapActivity extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String username = txtUser.getText().toString().trim();
-                String password = txtPassword.getText().toString().trim();
+                String username = String.valueOf(txtUser.getText());
+                String password = String.valueOf(txtPassword.getText());
                 if (!username.isEmpty() && !password.isEmpty())
                 {
-                    User loginUser=new User();
+                    User loginUser = new User();
                     loginUser.setUserName(username);
                     loginUser.setPassWord(password);
                     Log.e("User",  " " +loginUser.getPassWord());
@@ -90,10 +91,10 @@ public class DangNhapActivity extends AppCompatActivity {
                     Log.e("No User", "User is null");
                     return;
                 }
-                boolean isHasUser = true;
-//                if (UserLogin.getPassWord().trim().equals(user.getPassWord())) {
-//                    isHasUser = true;
-//                }
+                boolean isHasUser = false;
+                if (MD5.md5(UserLogin.getPassWord().trim()).equals(user.getPassWord())) {
+                    isHasUser = true;
+                }
                 if (isHasUser) {
                     Log.e("User", user.getUserName() + " " +user.getPassWord());
                     Intent intent = new Intent(DangNhapActivity.this, TrangChuActivity.class);

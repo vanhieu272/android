@@ -31,10 +31,14 @@ public class UserAPI {
 	@PostMapping(value = "/user/login")
 	public UserDTO getUser(@RequestBody UserDTO user) {
 		UserDTO userlogin=service.getUser(user.getUserName());
-		if (user==null || !new BCryptPasswordEncoder().matches(user.getPassWord(), userlogin.getPassWord())) {
+//		if (user==null || !new BCryptPasswordEncoder().matches(user.getPassWord(), userlogin.getPassWord())) {
+//			return null;
+//        }
+		if(user == null || userlogin.getPassWord().equals(user.getPassWord())) {
 			return null;
-        }
+		}
 		return service.getUser(userlogin.getUserName());
+		
 	}
 	
 	@GetMapping(value = "/user")

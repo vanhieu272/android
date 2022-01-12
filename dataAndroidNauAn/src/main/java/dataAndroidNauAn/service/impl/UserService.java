@@ -31,14 +31,15 @@ public class UserService implements IUserService {
 		if(model.getId() == null) {
 			entity = new UserEntity();
 			entity = converter.toEntity(model);
+//			passwordEncoder=new BCryptPasswordEncoder();
+//			String encoderPassword=passwordEncoder.encode(entity.getPassWord());
+//			entity.setPassWord(encoderPassword);
 		}
 		else {
 			UserEntity oldEntity = repository.findOne(model.getId()); //lấy entity cũ
 			entity = converter.toEntity(model, oldEntity); //cập nhật entity
 		}
-		passwordEncoder=new BCryptPasswordEncoder();
-		String encoderPassword=passwordEncoder.encode(entity.getPassWord());
-		entity.setPassWord(encoderPassword);
+		
 		repository.save(entity);
 		return converter.toDTO(entity);
 	}

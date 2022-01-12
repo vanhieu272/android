@@ -16,10 +16,15 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.Cooking.databinding.ActivityTrangChuBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class TrangChuActivity extends AppCompatActivity {
 
     private ActivityTrangChuBinding binding;
     public static String userName;
+    public static User user;
+    public static List<String> arrKey = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +34,7 @@ public class TrangChuActivity extends AppCompatActivity {
 
 
         binding = ActivityTrangChuBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -44,9 +50,11 @@ public class TrangChuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null){
-            User user = (User) bundle.getSerializable("objectUser");
+            user = (User) bundle.getSerializable("objectUser");
             userName = user.getUserName();
         }
+
+
 
     }
 

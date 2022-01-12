@@ -1,6 +1,8 @@
 package com.example.Cooking.Class;
 
-public class MonAn {
+import java.io.Serializable;
+
+public class MonAn implements Serializable {
     private String anh;
     private String tenMon;
     private String maMon;
