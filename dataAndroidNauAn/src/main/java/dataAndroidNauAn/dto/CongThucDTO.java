@@ -6,6 +6,8 @@ public class CongThucDTO {
 	private String congThuc;
 	private String maCT;
 	private String monCT;
+	private String anhCT;
+	
 	public Long getId() {
 		return id;
 	}
@@ -29,6 +31,12 @@ public class CongThucDTO {
 	}
 	public void setMaCT(String maCT) {
 		this.maCT = maCT;
+	}
+	public String getAnhCT() {
+		return anhCT;
+	}
+	public void setAnhCT(String anhCT) {
+		this.anhCT = anhCT;
 	}
 	
 	

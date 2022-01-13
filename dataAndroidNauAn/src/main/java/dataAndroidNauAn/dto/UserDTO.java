@@ -9,7 +9,7 @@ public class UserDTO {
 	private String passWord;
 	private String anh;
 	private String hoTen;
-	private Date ngaySinh;
+	private String ngaySinh;
 	private String email;
 	private String gioiTinh;
 	private String sdt;
@@ -50,12 +50,7 @@ public class UserDTO {
 	public void setHoTen(String hoTen) {
 		this.hoTen = hoTen;
 	}
-	public Date getNgaySinh() {
-		return ngaySinh;
-	}
-	public void setNgaySinh(Date ngaySinh) {
-		this.ngaySinh = ngaySinh;
-	}
+	
 	public String getEmail() {
 		return email;
 	}
@@ -74,6 +69,13 @@ public class UserDTO {
 	public void setSdt(String sdt) {
 		this.sdt = sdt;
 	}
+	public String getNgaySinh() {
+		return ngaySinh;
+	}
+	public void setNgaySinh(String ngaySinh) {
+		this.ngaySinh = ngaySinh;
+	}
+	
 	
 	
 }

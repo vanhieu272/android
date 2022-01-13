@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.LoadDuLieu;
+import com.example.Cooking.Class.MonAn;
 import com.example.Cooking.Class.User;
+import com.example.Cooking.ui.favorite.FavoriteAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,10 +20,19 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.example.Cooking.databinding.ActivityTrangChuBinding;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class TrangChuActivity extends AppCompatActivity {
 
     private ActivityTrangChuBinding binding;
     public static String userName;
+    public static User user;
+    public static List<String> arrKey = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +42,7 @@ public class TrangChuActivity extends AppCompatActivity {
 
 
         binding = ActivityTrangChuBinding.inflate(getLayoutInflater());
+
         setContentView(binding.getRoot());
 
         BottomNavigationView navView = findViewById(R.id.nav_view);
@@ -44,9 +58,26 @@ public class TrangChuActivity extends AppCompatActivity {
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
         if(bundle != null){
-            User user = (User) bundle.getSerializable("objectUser");
+            user = (User) bundle.getSerializable("objectUser");
             userName = user.getUserName();
         }
+
+        if(TrangChuActivity.userName != null){
+            ApiService.apiService.getMonYeuThichByUser(TrangChuActivity.userName).enqueue(new Callback<List<MonAn>>() {
+                @Override
+                public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
+                    List<MonAn> monAnList = response.body();
+                    LoadDuLieu.listYT = monAnList;
+
+                }
+
+                @Override
+                public void onFailure(Call<List<MonAn>> call, Throwable t) {
+
+                }
+            });
+        }
+
 
     }
 

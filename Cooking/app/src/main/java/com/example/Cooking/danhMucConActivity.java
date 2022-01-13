@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -13,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.LoadDuLieu;
 import com.example.Cooking.Class.MonAn;
 
 import java.util.ArrayList;
@@ -26,7 +28,7 @@ public class danhMucConActivity extends AppCompatActivity {
 
     ImageButton back, search;
     ListView listView;
-    List<MonAn> dmucConList;
+    List<MonAn> listMonAns;
     danhMucConAdapter danhMucConAdapter;
     private TextView txtTenDMC;
     String[] listNhan;
@@ -61,16 +63,50 @@ public class danhMucConActivity extends AppCompatActivity {
             }
         });
 
+        listView = findViewById(R.id.listView);
         callAPIMonAn();
+
+        //chọn món - xem chi tiết món
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MonAn monAn = listMonAns.get(position);
+                TextView txtTenMon = view.findViewById(R.id.tenMon);
+                String tenMon = String.valueOf(txtTenMon.getText());
+                Intent intent = new Intent(danhMucConActivity.this, ChiTietActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("maDM",listNhan[1]);
+                bundle.putSerializable("mon",monAn);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
+        //get list yeu thich
+        if(TrangChuActivity.userName != null){
+            ApiService.apiService.getMonYeuThichByUser(TrangChuActivity.userName).enqueue(new Callback<List<MonAn>>() {
+                @Override
+                public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
+                    List<MonAn>  monAnList = response.body();
+                    LoadDuLieu.listYT = monAnList;
+
+                }
+
+                @Override
+                public void onFailure(Call<List<MonAn>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 
     private void callAPIMonAn(){
        ApiService.apiService.getMonAnByDanhMuc(listNhan[1]).enqueue(new Callback<List<MonAn>>() {
            @Override
            public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
-               List<MonAn> listMonAns = new ArrayList<>();
+               listMonAns = new ArrayList<>();
                listMonAns = response.body();
-               listView = findViewById(R.id.listView);
+
                if(listMonAns != null){
                    danhMucConAdapter = new danhMucConAdapter(danhMucConActivity.this,R.layout.dong_danh_muc_con,listMonAns);
                    listView.setAdapter(danhMucConAdapter);

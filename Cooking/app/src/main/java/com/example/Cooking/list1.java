@@ -123,7 +123,7 @@ public class list1 extends Fragment {
                     DanhMuc danhMuc = LoadDuLieu.listDanhMuc.get(vitri);
                     //LinearLayout bao hình và chữ
                     LinearLayout linearLayoutTong = new LinearLayout(getActivity());
-                    LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(120,140);
+                    LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(120,150);
                     layoutParamsTong.setMargins(45,0,0,0);
                     linearLayoutTong.setLayoutParams(layoutParamsTong);
                     linearLayoutTong.setOrientation(LinearLayout.VERTICAL);
@@ -139,7 +139,7 @@ public class list1 extends Fragment {
 
                     TextView textView = new TextView(getActivity());
                     textView.setText(danhMuc.getTenDM());
-                    textView.setTextSize(8);
+                    textView.setTextSize(9);
                     textView.setTextColor(Color.BLACK);
                     textView.setGravity(Gravity.CENTER);
 

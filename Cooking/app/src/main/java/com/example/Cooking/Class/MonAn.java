@@ -1,13 +1,15 @@
 package com.example.Cooking.Class;
 
-public class MonAn {
+import java.io.Serializable;
+
+public class MonAn implements Serializable {
     private String anh;
     private String tenMon;
     private String maMon;
     private String nguoiDang;
     private String luotXem;
     private String luotThich;
-
+    private String maDM;
     public MonAn(){
 
     }
@@ -65,5 +67,13 @@ public class MonAn {
 
     public void setMaMon(String maMon) {
         this.maMon = maMon;
+    }
+
+    public String getMaDM() {
+        return maDM;
+    }
+
+    public void setMaDM(String maDM) {
+        this.maDM = maDM;
     }
 }

@@ -12,6 +12,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.MD5;
 import com.example.Cooking.Class.User;
 
 import retrofit2.Call;
@@ -48,7 +49,7 @@ public class DangKy1Activity extends AppCompatActivity {
                 if (!username.isEmpty() && !password.isEmpty() && !password2nd.isEmpty()){
                     if (password.equals(password2nd))
                     {
-                        clickNext(username, password);
+                        clickNext(username, MD5.md5(password));
                     }
                     else
                     {

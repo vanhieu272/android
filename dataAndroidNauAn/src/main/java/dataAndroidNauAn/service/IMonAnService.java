@@ -9,4 +9,5 @@ public interface IMonAnService {
 	List<MonAnDTO> getByMaDM(String maDM);
 	MonAnDTO getByMaMon(String maMon);
 	List<MonAnDTO> getAllMon();
+	List<MonAnDTO> findMon(String key);
 }
