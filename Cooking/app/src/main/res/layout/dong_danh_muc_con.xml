@@ -104,6 +104,7 @@
 <!--                android:background="#0000"-->
 <!--                android:src="@drawable/ic_baseline_favorite_border" />-->
             <CheckBox
+                android:id="@+id/checkbox"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_alignParentRight="true"

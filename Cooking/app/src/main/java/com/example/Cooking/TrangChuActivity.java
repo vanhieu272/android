@@ -5,7 +5,11 @@ import android.os.Bundle;
 import android.view.WindowManager;
 import android.widget.Toast;
 
+import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.LoadDuLieu;
+import com.example.Cooking.Class.MonAn;
 import com.example.Cooking.Class.User;
+import com.example.Cooking.ui.favorite.FavoriteAdapter;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +22,10 @@ import com.example.Cooking.databinding.ActivityTrangChuBinding;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class TrangChuActivity extends AppCompatActivity {
 
@@ -54,6 +62,21 @@ public class TrangChuActivity extends AppCompatActivity {
             userName = user.getUserName();
         }
 
+        if(TrangChuActivity.userName != null){
+            ApiService.apiService.getMonYeuThichByUser(TrangChuActivity.userName).enqueue(new Callback<List<MonAn>>() {
+                @Override
+                public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
+                    List<MonAn> monAnList = response.body();
+                    LoadDuLieu.listYT = monAnList;
+
+                }
+
+                @Override
+                public void onFailure(Call<List<MonAn>> call, Throwable t) {
+
+                }
+            });
+        }
 
 
     }

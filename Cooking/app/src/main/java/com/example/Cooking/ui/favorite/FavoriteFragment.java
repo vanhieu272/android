@@ -26,6 +26,7 @@ import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.ChiTietActivity;
 import com.example.Cooking.Class.LoadDuLieu;
 import com.example.Cooking.Class.MonAn;
 import com.example.Cooking.Class.YeuThich;
@@ -78,8 +79,8 @@ public class FavoriteFragment extends Fragment {
         //end button search
 
         //get List yeu thich
-        
 
+        listView = root.findViewById(R.id.listYeuThich);
         //Call API yeu thich
         if(TrangChuActivity.userName != null){
             ApiService.apiService.getMonYeuThichByUser(TrangChuActivity.userName).enqueue(new Callback<List<MonAn>>() {
@@ -87,7 +88,7 @@ public class FavoriteFragment extends Fragment {
                 public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
                     monAnList = response.body();
                     LoadDuLieu.listYT = monAnList;
-                    listView = root.findViewById(R.id.listYeuThich);
+
                     FavoriteAdapter favoriteAdapter = new FavoriteAdapter(getActivity(),R.layout.dong_yeu_thich,monAnList);
                     listView.setAdapter(favoriteAdapter);
 
@@ -110,6 +111,27 @@ public class FavoriteFragment extends Fragment {
         }
         else {
             openDialog(Gravity.CENTER);
+        }
+
+        //chọn món - xem chi tiết món
+        List<MonAn> lt = LoadDuLieu.listYT;
+        if(LoadDuLieu.listYT != null){
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    MonAn monAn = LoadDuLieu.listYT.get(position);
+                    
+                    Intent intent = new Intent(getActivity(), ChiTietActivity.class);
+                    Bundle bundle = new Bundle();
+                    bundle.putString("maDM",monAn.getMaDM());
+                    bundle.putSerializable("mon",monAn);
+                    intent.putExtra("bundle",bundle);
+                    startActivity(intent);
+                }
+            });
+        }
+        else{
+            Toast.makeText(getActivity(), "loi", Toast.LENGTH_SHORT).show();
         }
 
         return root;

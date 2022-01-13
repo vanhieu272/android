@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.LoadDuLieu;
 import com.example.Cooking.Class.MonAn;
 
 import java.util.ArrayList;
@@ -80,6 +81,23 @@ public class danhMucConActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        //get list yeu thich
+        if(TrangChuActivity.userName != null){
+            ApiService.apiService.getMonYeuThichByUser(TrangChuActivity.userName).enqueue(new Callback<List<MonAn>>() {
+                @Override
+                public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
+                    List<MonAn>  monAnList = response.body();
+                    LoadDuLieu.listYT = monAnList;
+
+                }
+
+                @Override
+                public void onFailure(Call<List<MonAn>> call, Throwable t) {
+
+                }
+            });
+        }
     }
 
     private void callAPIMonAn(){

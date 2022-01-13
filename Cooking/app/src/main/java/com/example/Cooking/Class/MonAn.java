@@ -9,7 +9,7 @@ public class MonAn implements Serializable {
     private String nguoiDang;
     private String luotXem;
     private String luotThich;
-
+    private String maDM;
     public MonAn(){
 
     }
@@ -67,5 +67,13 @@ public class MonAn implements Serializable {
 
     public void setMaMon(String maMon) {
         this.maMon = maMon;
+    }
+
+    public String getMaDM() {
+        return maDM;
+    }
+
+    public void setMaDM(String maDM) {
+        this.maDM = maDM;
     }
 }

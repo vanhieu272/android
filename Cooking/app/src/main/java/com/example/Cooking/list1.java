@@ -123,13 +123,13 @@ public class list1 extends Fragment {
                     DanhMuc danhMuc = LoadDuLieu.listDanhMuc.get(vitri);
                     //LinearLayout bao hình và chữ
                     LinearLayout linearLayoutTong = new LinearLayout(getActivity());
-                    LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(200,230);
-                    layoutParamsTong.setMargins(50,0,0,0);
+                    LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(120,150);
+                    layoutParamsTong.setMargins(45,0,0,0);
                     linearLayoutTong.setLayoutParams(layoutParamsTong);
                     linearLayoutTong.setOrientation(LinearLayout.VERTICAL);
 
                     LinearLayout linearLayout = new LinearLayout(getActivity());
-                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(200,200);
+                    LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(120,120);
                     linearLayout.setLayoutParams(layoutParams);
                     ImageButton imageButton = new ImageButton(getActivity());
                     Glide.with(getContext()).load(IP.localhostHinhAnh+danhMuc.getAnh()).into(imageButton);

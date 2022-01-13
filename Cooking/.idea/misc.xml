@@ -13,6 +13,7 @@
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/drawable/bg_white_corner_20.xml" value="0.2703125" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/drawable/boder_radius_gray_cancel.xml" value="0.2703125" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/drawable/border_radius.xml" value="0.2703125" />
+        <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/drawable/checkbox_red.xml" value="0.14635416666666667" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/drawable/et_circle_15.xml" value="0.2703125" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/drawable/ic_edit_24.xml" value="0.2703125" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/activity_chi_tiet.xml" value="0.25416666666666665" />
@@ -31,6 +32,7 @@
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/dialog_success.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/dong_danh_muc_con.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/dong_nguyen_lieu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/dong_yeu_thich.xml" value="0.24547101449275363" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/fragment_tai_khoan.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/fragment_thong_bao.xml" value="0.25416666666666665" />
         <entry key="..\:/Nam3_Ki1/LTDT_Android/android/Cooking/app/src/main/res/layout/fragment_trang_chu.xml" value="0.25416666666666665" />

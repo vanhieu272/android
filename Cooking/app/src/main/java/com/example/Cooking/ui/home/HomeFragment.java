@@ -36,6 +36,7 @@ import com.example.Cooking.R;
 import com.example.Cooking.TimKiemActivity;
 import com.example.Cooking.TrangChuActivity;
 import com.example.Cooking.databinding.FragmentTrangChuBinding;
+import com.example.Cooking.ui.favorite.FavoriteAdapter;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -104,7 +105,22 @@ public class HomeFragment extends Fragment {
             }
         });
         //end viewpager2
+        if(TrangChuActivity.userName != null){
+            ApiService.apiService.getMonYeuThichByUser(TrangChuActivity.userName).enqueue(new Callback<List<MonAn>>() {
+                @Override
+                public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
+                    List<MonAn> monAnList = response.body();
+                    LoadDuLieu.listYT = monAnList;
 
+
+                }
+
+                @Override
+                public void onFailure(Call<List<MonAn>> call, Throwable t) {
+
+                }
+            });
+        }
         //Công thức cộng đồng
         ApiService.apiService.getAllMon().enqueue(new Callback<List<MonAn>>() {
             @Override
@@ -123,14 +139,14 @@ public class HomeFragment extends Fragment {
                                 monAn = LoadDuLieu.listMonAn.get(vitri);
                                 //LinearLayout bao ngoài
                                 LinearLayout linearLayoutTong = new LinearLayout(getActivity());
-                                LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(300,LinearLayout.LayoutParams.WRAP_CONTENT);
-                                layoutParamsTong.setMargins(45,0,0,0);
+                                LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(200,LinearLayout.LayoutParams.WRAP_CONTENT);
+                                layoutParamsTong.setMargins(30,0,0,0);
                                 linearLayoutTong.setLayoutParams(layoutParamsTong);
                                 linearLayoutTong.setOrientation(LinearLayout.VERTICAL);
 
                                 //set ảnh
                                 LinearLayout linearLayout = new LinearLayout(getActivity());
-                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,300);
+                                LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,200);
                                 linearLayout.setLayoutParams(layoutParams);
                                 ImageView imageView = new ImageView(getActivity());
                                 Glide.with(getContext()).load(IP.localhostHinhAnh+monAn.getAnh()).into(imageView);
@@ -148,7 +164,19 @@ public class HomeFragment extends Fragment {
                                 textView.setTextColor(Color.BLACK);
                                 textView.setLines(2);
 
+
                                 CheckBox checkBox = new CheckBox(getActivity());
+                                //get list yeu thich
+
+                                String maYT = "";
+                                if(LoadDuLieu.listYT!=null){
+                                    for (MonAn mon: LoadDuLieu.listYT) {
+                                        maYT +=" " + mon.getMaMon();
+                                    }
+                                    if(maYT.contains(monAn.getMaMon())){
+                                        checkBox.setChecked(true);
+                                    }
+                                }
                                 checkBox.setButtonDrawable(R.drawable.checkbox_15px);
                                 RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                                 layoutParams2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,relativeLayout.getId());
