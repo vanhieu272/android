@@ -1,5 +1,6 @@
 package dataAndroidNauAn.api;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +13,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RequestPart;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import dataAndroidNauAn.dto.UserDTO;
 import dataAndroidNauAn.service.impl.UserService;
@@ -55,4 +58,13 @@ public class UserAPI {
 	public List<UserDTO> ListUser() {
 		return service.getAllUser();
 	}
+	
+	@PostMapping(value = "/image")
+	public UserDTO uploadFile(@RequestPart(name = "file") MultipartFile file, @RequestPart(name = "userName") String userName) throws IllegalStateException, IOException {
+		return service.uploadFile(file,userName);
+	}
+	
+	
+	
+	
 }

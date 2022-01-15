@@ -1,12 +1,21 @@
 package com.example.Cooking.ui.account;
 
+import static android.app.Activity.RESULT_OK;
+
+import android.Manifest;
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,17 +25,22 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.bumptech.glide.Glide;
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.Class.IP;
 import com.example.Cooking.Class.MD5;
+import com.example.Cooking.Class.RealPathUtil;
 import com.example.Cooking.Class.User;
 import com.example.Cooking.DangNhapActivity;
 import com.example.Cooking.DatePicker;
@@ -36,6 +50,13 @@ import com.example.Cooking.databinding.FragmentTaiKhoanBinding;
 import com.google.android.material.textfield.TextInputEditText;
 
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
+import okhttp3.MediaType;
+import okhttp3.MultipartBody;
+import okhttp3.RequestBody;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -58,9 +79,15 @@ public class AccountFragment extends Fragment {
     private ImageButton btnEditNgaySinh;
     private ImageButton btnEditGioiTinh;
     private ImageButton btnEditSDT;
+    private ImageButton btnEditAnh;
     private View root;
     private LinearLayout lnContent;
+    private ImageView imgAva;
+    private Uri mUri;
 
+
+    private int REQUEST_IMAGE = 123;
+    private int MY_REQUEST = 111;
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         accountViewModel =
@@ -83,11 +110,18 @@ public class AccountFragment extends Fragment {
         btnEditNgaySinh = root.findViewById(R.id.editNgaySinh);
         btnEditGioiTinh = root.findViewById(R.id.editGioiTinh);
         btnEditSDT = root.findViewById(R.id.editSDT);
+        btnEditAnh = root.findViewById(R.id.editAnh);
+        imgAva = root.findViewById(R.id.ava);
+
+
+
 
         //get user
         user = TrangChuActivity.user;
 
         if(user != null){
+
+
             //settext
 
             txtFullname.setText(user.getHoTen());
@@ -96,6 +130,7 @@ public class AccountFragment extends Fragment {
             txtSdt.setText(user.getSdt());
             txtUsername.setText(user.getUserName());
             txtEmail.setText(user.getEmail());
+
 
             //dang xuat
             btnDangXuat.setOnClickListener(new View.OnClickListener() {
@@ -149,6 +184,29 @@ public class AccountFragment extends Fragment {
                     openDialog(Gravity.CENTER, R.layout.dialog_change_password);
                 }
             });
+
+            //set ava
+            Glide.with(getContext()).load(IP.localhostHinhAnh+user.getAnh()).into(imgAva);
+            //edit anh
+            btnEditAnh.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M )
+                    {
+                        return;
+                    }
+                    if(getContext().checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE)== PackageManager.PERMISSION_GRANTED){
+                        Intent intent = new Intent(Intent.ACTION_PICK);
+                        intent.setType("image/*");
+                        startActivityForResult(intent,REQUEST_IMAGE);
+                    }
+                    else
+                    {
+                        String[] permission = {Manifest.permission.READ_EXTERNAL_STORAGE};
+                        requestPermissions(permission, MY_REQUEST);
+                    }
+                }
+            });
         }
         else{
             lnContent = root.findViewById(R.id.lnContent);
@@ -158,6 +216,7 @@ public class AccountFragment extends Fragment {
 
         return root;
     }
+
 
     @Override
     public void onDestroyView() {
@@ -396,5 +455,52 @@ public class AccountFragment extends Fragment {
             }
         });
         dialog.show();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        if(requestCode == REQUEST_IMAGE && resultCode == RESULT_OK && data != null){
+            Uri uri = data.getData();
+            mUri = uri;
+            try {
+                InputStream inputStream = getContext().getContentResolver().openInputStream(uri);
+                Bitmap bitmap = BitmapFactory.decodeStream(inputStream);
+
+                imgAva.setImageBitmap(bitmap);
+                callApiImage();
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+        }
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    private void callApiImage(){
+        String name = user.getUserName();
+        RequestBody requestBodyUsername = RequestBody.create(MediaType.parse("*/*"),user.getUserName());
+
+        String realFile = RealPathUtil.getRealPath(getContext(),mUri);
+        Log.e("d",realFile);
+        File file = new File(realFile);
+        RequestBody requestBodyAva = RequestBody.create(MediaType.parse("*/*"),file);
+        MultipartBody.Part multipartAva = MultipartBody.Part.createFormData("file",file.getName(),requestBodyAva);
+        ApiService.apiService.uploadImage(multipartAva,requestBodyUsername).enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(Call<User> call, Response<User> response) {
+                user = response.body();
+                if(user!=null){
+                    Glide.with(getContext()).load(IP.localhostHinhAnh+user.getAnh()).into(imgAva);
+                    TrangChuActivity.user = user;
+                }
+                Toast.makeText(getContext(), "tc", Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(Call<User> call, Throwable t) {
+                Toast.makeText(getContext(), "loi", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
     }
 }

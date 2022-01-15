@@ -3,6 +3,7 @@ package com.example.Cooking.ui.home;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -232,6 +233,33 @@ public class HomeFragment extends Fragment {
                                         }
                                         else {
                                             Toast.makeText(getActivity(), "bo chon", Toast.LENGTH_SHORT).show();
+                                            ApiService.apiService.getYeuThichByMaMon(LoadDuLieu.listMonAn.get(vitri).getMaMon(), TrangChuActivity.userName).enqueue(new Callback<YeuThich>() {
+                                                @Override
+                                                public void onResponse(Call<YeuThich> call, Response<YeuThich> response) {
+                                                    YeuThich yeuThich = response.body();
+                                                    ApiService.apiService.deleteYeuThich(yeuThich.getId()).enqueue(new Callback<YeuThich>() {
+                                                        @Override
+                                                        public void onResponse(Call<YeuThich> call, Response<YeuThich> response) {
+                                                            if (response.isSuccessful()){
+                                                                LoadDuLieu.listYT.remove(yeuThich);
+                                                                Log.e("a","xoa tc");
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(Call<YeuThich> call, Throwable t) {
+
+                                                        }
+                                                    });
+
+                                                }
+
+                                                @Override
+                                                public void onFailure(Call<YeuThich> call, Throwable t) {
+
+                                                }
+                                            });
+
                                         }
                                     }
                                 });

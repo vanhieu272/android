@@ -1,5 +1,7 @@
 package dataAndroidNauAn.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -7,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import dataAndroidNauAn.converter.UserConverter;
 import dataAndroidNauAn.dto.UserDTO;
@@ -62,6 +65,16 @@ public class UserService implements IUserService {
 		}
 		return listDTO;
 	}
+	
+	public UserDTO uploadFile(MultipartFile file, String userName) throws IllegalStateException, IOException {
+		file.transferTo(new File("D:\\Nam3_Ki1\\LTDT_Android\\android\\dataAndroidNauAn\\src\\main\\resources\\static\\image\\"+file.getOriginalFilename()));
+		
+		UserEntity entity = repository.findOneByUserName(userName);
+		entity.setAnh(file.getOriginalFilename());
+		repository.save(entity);
+		return converter.toDTO(entity);
+	}
+	
 	
 
 }

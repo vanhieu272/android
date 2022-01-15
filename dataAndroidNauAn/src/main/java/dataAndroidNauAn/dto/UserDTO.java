@@ -2,6 +2,8 @@ package dataAndroidNauAn.dto;
 
 import java.util.Date;
 
+import org.springframework.web.multipart.MultipartFile;
+
 public class UserDTO {
 
 	private Long id;
@@ -14,6 +16,8 @@ public class UserDTO {
 	private String gioiTinh;
 	private String sdt;
 	private int status;
+	
+	private MultipartFile imageFile;
 	public Long getId() {
 		return id;
 	}
@@ -74,6 +78,12 @@ public class UserDTO {
 	}
 	public void setNgaySinh(String ngaySinh) {
 		this.ngaySinh = ngaySinh;
+	}
+	public MultipartFile getImageFile() {
+		return imageFile;
+	}
+	public void setImageFile(MultipartFile imageFile) {
+		this.imageFile = imageFile;
 	}
 	
 	

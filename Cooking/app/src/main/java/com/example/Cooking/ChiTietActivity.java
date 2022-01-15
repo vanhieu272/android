@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
@@ -108,7 +109,7 @@ public class ChiTietActivity extends AppCompatActivity {
                         layoutParamsTen.weight = 8;
                         TextView textNguyenLieu = new TextView(ChiTietActivity.this);
                         textNguyenLieu.setText(nl.getTen());
-                        textNguyenLieu.setTextSize(18);
+                        textNguyenLieu.setTextSize(14);
                         textNguyenLieu.setTextColor(Color.BLACK);
                         textNguyenLieu.setLayoutParams(layoutParamsTen);
 
@@ -116,7 +117,7 @@ public class ChiTietActivity extends AppCompatActivity {
                         layoutParamsDL.weight = 2;
                         TextView textDinhLuong = new TextView(ChiTietActivity.this);
                         textDinhLuong.setText(nl.getDinhLuong());
-                        textDinhLuong.setTextSize(18);
+                        textDinhLuong.setTextSize(14);
                         textDinhLuong.setTextColor(Color.BLACK);
                         textDinhLuong.setLayoutParams(layoutParamsDL);
 
@@ -125,8 +126,7 @@ public class ChiTietActivity extends AppCompatActivity {
                         lnNguyenLieu.addView(linearLayout);
 
                     }
-//                    nguyenLieuAdapter = new NguyenLieuAdapter(ChiTietActivity.this,R.layout.dong_nguyen_lieu,listNguyenLieu);
-//                    listViewNguyeLieu.setAdapter(nguyenLieuAdapter);
+//
                 }
             }
 
@@ -149,10 +149,10 @@ public class ChiTietActivity extends AppCompatActivity {
 
                         TextView txtCongThuc = new TextView(ChiTietActivity.this);
                         txtCongThuc.setText(i++ + ". "+ ct.getCongThuc());
-                        txtCongThuc.setTextSize(16);
+                        txtCongThuc.setTextSize(14);
                         txtCongThuc.setTextColor(Color.BLACK);
 
-                        LinearLayout.LayoutParams layoutParamsAnh = new LinearLayout.LayoutParams(300,300);
+                        LinearLayout.LayoutParams layoutParamsAnh = new LinearLayout.LayoutParams(200,200);
                         ImageView img = new ImageView(ChiTietActivity.this);
                         img.setLayoutParams(layoutParamsAnh);
                         Glide.with(ChiTietActivity.this).load(IP.localhostHinhAnh+ct.getAnhCT()).into(img);
@@ -192,8 +192,8 @@ public class ChiTietActivity extends AppCompatActivity {
                                 MonAn monAn = LoadDuLieu.listMonAn.get(vitri);
                                 //LinearLayout bao ngoài
                                 LinearLayout linearLayoutTong = new LinearLayout(ChiTietActivity.this);
-                                LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(400,LinearLayout.LayoutParams.WRAP_CONTENT);
-                                layoutParamsTong.setMargins(90,0,0,0);
+                                LinearLayout.LayoutParams layoutParamsTong = new LinearLayout.LayoutParams(300,LinearLayout.LayoutParams.WRAP_CONTENT);
+                                layoutParamsTong.setMargins(45,0,0,0);
                                 linearLayoutTong.setLayoutParams(layoutParamsTong);
                                 linearLayoutTong.setOrientation(LinearLayout.VERTICAL);
 
@@ -213,11 +213,20 @@ public class ChiTietActivity extends AppCompatActivity {
 
                                 TextView textView = new TextView(ChiTietActivity.this);
                                 textView.setText(monAn.getTenMon());
-                                textView.setTextSize(16);
+                                textView.setTextSize(14);
                                 textView.setTextColor(Color.BLACK);
                                 textView.setLines(2);
 
                                 CheckBox checkBox = new CheckBox(ChiTietActivity.this);
+                                String maYT = "";
+                                if(LoadDuLieu.listYT!=null){
+                                    for (MonAn mon: LoadDuLieu.listYT) {
+                                        maYT +=" " + mon.getMaMon();
+                                    }
+                                    if(maYT.contains(monAn.getMaMon())){
+                                        checkBox.setChecked(true);
+                                    }
+                                }
                                 checkBox.setButtonDrawable(R.drawable.checkbox_15px);
                                 RelativeLayout.LayoutParams layoutParams2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
                                 layoutParams2.addRule(RelativeLayout.ALIGN_PARENT_RIGHT,relativeLayout.getId());
@@ -235,7 +244,7 @@ public class ChiTietActivity extends AppCompatActivity {
                                 //giờ
                                 TextView textView2 = new TextView(ChiTietActivity.this);
                                 textView2.setText("1 gio");
-                                textView2.setTextSize(16);
+                                textView2.setTextSize(14);
                                 textView2.setTextColor(Color.BLACK);
 
                                 linearLayoutTong.addView(linearLayout);
@@ -273,6 +282,33 @@ public class ChiTietActivity extends AppCompatActivity {
                                         }
                                         else {
                                             Toast.makeText(ChiTietActivity.this, "bo chon", Toast.LENGTH_SHORT).show();
+                                            ApiService.apiService.getYeuThichByMaMon(LoadDuLieu.listMonAn.get(vitri).getMaMon(), TrangChuActivity.userName).enqueue(new Callback<YeuThich>() {
+                                                @Override
+                                                public void onResponse(Call<YeuThich> call, Response<YeuThich> response) {
+                                                    YeuThich yeuThich = response.body();
+                                                    ApiService.apiService.deleteYeuThich(yeuThich.getId()).enqueue(new Callback<YeuThich>() {
+                                                        @Override
+                                                        public void onResponse(Call<YeuThich> call, Response<YeuThich> response) {
+                                                            if (response.isSuccessful()){
+                                                                LoadDuLieu.listYT.remove(yeuThich);
+                                                                Log.e("a","xoa tc");
+                                                            }
+                                                        }
+
+                                                        @Override
+                                                        public void onFailure(Call<YeuThich> call, Throwable t) {
+
+                                                        }
+                                                    });
+
+                                                }
+
+                                                @Override
+                                                public void onFailure(Call<YeuThich> call, Throwable t) {
+
+                                                }
+                                            });
+
                                         }
                                     }
                                 });

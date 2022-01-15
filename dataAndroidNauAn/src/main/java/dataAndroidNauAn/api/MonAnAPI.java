@@ -33,6 +33,11 @@ public class MonAnAPI {
 		return service.getByMaMon(maMon);
 	}
 	
+	@GetMapping(value = "/motMonAnId") //lấy 1 món theo id
+	public MonAnDTO getMonById(@RequestParam("id") Long id) {
+		return service.getMonById(id);
+	}
+	
 	@GetMapping(value = "/getAllMon")
 	public List<MonAnDTO> getAllMon(){
 		return service.getAllMon();

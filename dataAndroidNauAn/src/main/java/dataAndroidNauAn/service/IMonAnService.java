@@ -10,4 +10,5 @@ public interface IMonAnService {
 	MonAnDTO getByMaMon(String maMon);
 	List<MonAnDTO> getAllMon();
 	List<MonAnDTO> findMon(String key);
+	MonAnDTO getMonById(Long id);
 }

@@ -121,6 +121,12 @@ public class MonAnService implements IMonAnService{
 		return listDTO;
 	}
 
+	@Override
+	public MonAnDTO getMonById(Long id) {
+		MonAnEntity monAnEntity = repository.findOne(id);
+		return converter.toDTO(monAnEntity);
+	}
+
 	
 	
 }

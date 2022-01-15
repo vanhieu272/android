@@ -179,7 +179,8 @@ public class TimKiemActivity extends AppCompatActivity {
                 String key = String.valueOf(txtKey.getText());
                 edtKey.setText(key);
                 CallApiFind(key);
-                
+
+
                 ImageButton imgDelete = (ImageButton) view.findViewById(R.id.delete);
                 imgDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -189,12 +190,30 @@ public class TimKiemActivity extends AppCompatActivity {
                 });
             }
         });
+
+        //chọn món - xem chi tiết món
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                MonAn monAn = listMon.get(position);
+                TextView txtTenMon = view.findViewById(R.id.tenMon);
+                String tenMon = String.valueOf(txtTenMon.getText());
+                Intent intent = new Intent(TimKiemActivity.this, ChiTietActivity.class);
+                Bundle bundle = new Bundle();
+                bundle.putString("maDM",monAn.getMaDM());
+                bundle.putSerializable("mon",monAn);
+                intent.putExtra("bundle",bundle);
+                startActivity(intent);
+            }
+        });
+
     }
 
     private void CallApiFind(String key){
         ApiService.apiService.findMon(key).enqueue(new Callback<List<MonAn>>() {
             @Override
             public void onResponse(Call<List<MonAn>> call, Response<List<MonAn>> response) {
+                listMon = new ArrayList<>();
                 listMon = response.body();
 
                 if(listMon != null){
