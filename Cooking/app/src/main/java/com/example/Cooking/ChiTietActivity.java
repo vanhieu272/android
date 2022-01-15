@@ -252,6 +252,19 @@ public class ChiTietActivity extends AppCompatActivity {
                                 linearLayoutTong.addView(textView1);
                                 linearLayoutTong.addView(textView2);
 
+                                linearLayoutTong.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        MonAn mon = LoadDuLieu.listMonAn.get(vitri);
+                                        Intent intent = new Intent(ChiTietActivity.this, ChiTietActivity.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("maDM",mon.getMaDM());
+                                        bundle.putSerializable("mon",mon);
+                                        intent.putExtra("bundle",bundle);
+                                        startActivity(intent);
+                                    }
+                                });
+
                                 gridLayout.addView(linearLayoutTong);
 
                                 //sự kiện checkbox

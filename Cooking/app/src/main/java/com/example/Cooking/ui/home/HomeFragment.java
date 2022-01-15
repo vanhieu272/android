@@ -26,6 +26,7 @@ import androidx.viewpager2.widget.ViewPager2;
 
 import com.bumptech.glide.Glide;
 import com.example.Cooking.API.ApiService;
+import com.example.Cooking.ChiTietActivity;
 import com.example.Cooking.Class.IP;
 import com.example.Cooking.Class.LoadDuLieu;
 import com.example.Cooking.Class.MonAn;
@@ -36,6 +37,7 @@ import com.example.Cooking.PhotoAdapter;
 import com.example.Cooking.R;
 import com.example.Cooking.TimKiemActivity;
 import com.example.Cooking.TrangChuActivity;
+import com.example.Cooking.danhMucConActivity;
 import com.example.Cooking.databinding.FragmentTrangChuBinding;
 import com.example.Cooking.ui.favorite.FavoriteAdapter;
 
@@ -203,6 +205,18 @@ public class HomeFragment extends Fragment {
                                 linearLayoutTong.addView(textView1);
                                 linearLayoutTong.addView(textView2);
 
+                                linearLayoutTong.setOnClickListener(new View.OnClickListener() {
+                                    @Override
+                                    public void onClick(View v) {
+                                        MonAn mon = LoadDuLieu.listMonAn.get(vitri);
+                                        Intent intent = new Intent(getContext(), ChiTietActivity.class);
+                                        Bundle bundle = new Bundle();
+                                        bundle.putString("maDM",mon.getMaDM());
+                                        bundle.putSerializable("mon",mon);
+                                        intent.putExtra("bundle",bundle);
+                                        startActivity(intent);
+                                    }
+                                });
                                 gridLayout.addView(linearLayoutTong);
 
                                 //sự kiện checkbox

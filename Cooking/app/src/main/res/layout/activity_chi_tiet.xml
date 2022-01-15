@@ -37,7 +37,7 @@
             app:layout_constraintHeight_percent="0.7"
             app:layout_constraintHorizontal_bias="0.4"
             android:textColor="@color/white"
-            android:text="Lẩu thái"
+            android:text=""
             android:textSize="25dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
@@ -54,7 +54,6 @@
                 android:id="@+id/anhMon"
                 android:layout_width="match_parent"
                 android:layout_height="260dp"
-                android:background="@drawable/lauthai"
                 android:scaleType="centerCrop">
             </ImageView>
 
